@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="625.0" prefWidth="882.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cuponsmart.FXMLInicioSesionController">
+    <children>
+        <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="631.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="425.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="0.5714285714285715">
+               <stops>
+                  <Stop color="#b335c9" />
+                  <Stop color="#1f5080" offset="0.9961685823754789" />
+                  <Stop color="#1f5080" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Label layoutX="533.0" layoutY="170.0" text="Para acceder, ingrese sus credenciales">
+         <font>
+            <Font name="Corbel" size="15.0" />
+         </font>
+      </Label>
+      <Text layoutX="495.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenido(a) al sistema de CuponSmart">
+         <font>
+            <Font name="Leelawadee UI Semilight" size="18.0" />
+         </font>
+      </Text>
+      <TextField fx:id="tfUsuario" layoutX="545.0" layoutY="233.0" promptText="Usuario">
+         <font>
+            <Font name="Arial" size="15.0" />
+         </font>
+      </TextField>
+      <Label fx:id="lbErrorUsername" layoutX="543.0" layoutY="278.0" textFill="#dd1010" />
+      <Label fx:id="lbErrorPassword" layoutX="544.0" layoutY="337.0" textFill="#dd1010" />
+      <Button layoutX="589.0" layoutY="375.0" mnemonicParsing="false" onAction="#btnInicioSesion" text="Iniciar sesión">
+         <font>
+            <Font name="Arial" size="15.0" />
+         </font>
+      </Button>
+      <PasswordField fx:id="tfPassword" layoutX="545.0" layoutY="299.0" promptText="Contraseña">
+         <font>
+            <Font name="Arial" size="15.0" />
+         </font>
+      </PasswordField>
+    </children>
+</AnchorPane>

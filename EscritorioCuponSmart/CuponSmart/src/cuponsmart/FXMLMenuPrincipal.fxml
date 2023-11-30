@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="521.0" prefWidth="557.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cuponsmart.FXMLMenuPrincipalController">
+   <children>
+      <Text layoutX="205.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenido, ">
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="300.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="adminPrincipal">
+         <font>
+            <Font name="Arial" size="15.0" />
+         </font>
+      </Text>
+      <Button layoutX="44.0" layoutY="472.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="117.0" style="-fx-background-color: #BC55E8;" text="Cerrar sesión" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </Button>
+      <Button layoutX="329.0" layoutY="129.0" mnemonicParsing="false" onAction="#btnIrAdminSucursales" prefHeight="71.0" prefWidth="117.0" style="-fx-background-color: #BC55E8;" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="15.0" />
+         </font>
+      </Button>
+      <Button layoutX="177.0" layoutY="129.0" mnemonicParsing="false" onAction="#btnIrAdminEmpresas" prefHeight="71.0" prefWidth="117.0" style="-fx-background-color: #BC55E8;" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="15.0" />
+         </font>
+      </Button>
+      <Button layoutX="177.0" layoutY="247.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="117.0" style="-fx-background-color: #BC55E8;" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="15.0" />
+         </font>
+      </Button>
+      <Button layoutX="329.0" layoutY="247.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="117.0" style="-fx-background-color: #BC55E8;" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="15.0" />
+         </font>
+      </Button>
+      <Label layoutX="204.0" layoutY="207.0" text="Empresas">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="356.0" layoutY="215.0" text="Sucursales">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="208.0" layoutY="337.0" text="Usuarios">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="350.0" layoutY="337.0" text="Promociones">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
