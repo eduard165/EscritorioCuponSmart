@@ -29,7 +29,7 @@ public class InicioSesionDAO {
             rest = gson.fromJson(respuesta.getContenido(), RespuestaLoginEscritorio.class);
         } else {
             rest.setError(true);
-            rest.setContenido("error de validacion de datos " + respuesta.getCodigoRespuesta());
+            rest.setContenido("Hubo un error al validar datos " + respuesta.getCodigoRespuesta());
         }
         return rest;
     }

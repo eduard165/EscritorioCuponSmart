@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="655.0" prefWidth="971.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cuponsmart.FXMLAdminEmpresasController">
+   <children>
+      
+      <Label layoutX="408.0" layoutY="39.0" text="Lista de Empresas">
+         <font>
+            <Font name="Ebrima Bold" size="36.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tvEmpresas" layoutX="227.0" layoutY="244.0" prefHeight="364.0" prefWidth="730.0" style="-fx-background-color: 9C27B0;">
+        <columns>
+          <TableColumn fx:id="tcRFC" prefWidth="107.0" text="RFC" />
+          <TableColumn fx:id="tcNombre" prefWidth="104.0" text="Nombre" />
+            <TableColumn fx:id="tcNombreComercial" prefWidth="157.0" text="Nombre Comercial" />
+            <TableColumn fx:id="tcTelefono" prefWidth="114.0" text="Télefono" />
+            <TableColumn fx:id="tcEmail" prefWidth="110.0" text="Email" />
+            <TableColumn fx:id="tcRepLegal" prefWidth="137.0" text="Rep. Legal" />
+        </columns>
+      </TableView>
+      <TextField fx:id="tfBusquedaEmpresa" layoutX="416.0" layoutY="142.0" prefHeight="31.0" prefWidth="283.0" />
+      <Label layoutX="347.0" layoutY="148.0" text="Buscar">
+         <font>
+            <Font name="Ebrima Bold" size="15.0" />
+         </font>
+      </Label>
+      <Pane prefHeight="655.0" prefWidth="186.0" style="-fx-background-color: #5125ad;">
+         <children>
+            <Button layoutX="25.0" layoutY="575.0" mnemonicParsing="false" onAction="#btnMenuPrincipal" prefHeight="27.0" prefWidth="117.0" style="-fx-background-color: #5125ad; -fx-border-color: #000000}; -fx-border-radius: 20; -fx-background-radius: 20;" text="Regresar a menú" textFill="WHITE">
+               <font>
+                  <Font name="Verdana Bold" size="10.0" />
+               </font>
+            </Button>
+            <ImageView fx:id="ivUsuarioSesionFoto" fitHeight="99.0" fitWidth="117.0" layoutX="40.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true" />
+            <Label layoutX="69.0" layoutY="193.0" text="Usuario:" textFill="WHITE">
+               <font>
+                  <Font name="Tahoma Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbUsuarioSesion" layoutX="83.0" layoutY="226.0" textFill="WHITE">
+               <font>
+                  <Font name="Tahoma" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Button layoutX="321.0" layoutY="199.0" mnemonicParsing="false" onAction="#btnRegistroEmpresa" prefHeight="27.0" prefWidth="117.0" style="-fx-background-color: #5125ad; -fx-border-color: #000000}; -fx-border-radius: 20; -fx-background-radius: 20;" text="Registrar" textFill="WHITE">
+         <font>
+            <Font name="Verdana Bold" size="10.0" />
+         </font>
+      </Button>
+      <Button layoutX="495.0" layoutY="198.0" mnemonicParsing="false" onAction="#btnEdicionEmpresa" prefHeight="27.0" prefWidth="117.0" style="-fx-background-color: #5125ad; -fx-border-color: #000000}; -fx-border-radius: 20; -fx-background-radius: 20;" text="Editar " textFill="WHITE">
+         <font>
+            <Font name="Verdana Bold" size="10.0" />
+         </font>
+      </Button>
+      <Button layoutX="660.0" layoutY="198.0" mnemonicParsing="false" onAction="#btnEliminarEmpresa" prefHeight="27.0" prefWidth="117.0" style="-fx-background-color: #5125ad; -fx-border-color: #000000}; -fx-border-radius: 20; -fx-background-radius: 20;" text="Eliminar" textFill="WHITE">
+         <font>
+            <Font name="Verdana Bold" size="10.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
