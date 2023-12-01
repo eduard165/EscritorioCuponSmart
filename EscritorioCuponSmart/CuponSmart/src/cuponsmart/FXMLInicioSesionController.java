@@ -50,6 +50,8 @@ public class FXMLInicioSesionController implements Initializable {
     private void btnInicioSesion(ActionEvent event) {
         if (validarDatos()) {
             verificarSesion(usuario);
+        }else{
+            //agregar error en los labels de user y password 
         }
     }
     private void verificarSesion(Usuario usuario) {
