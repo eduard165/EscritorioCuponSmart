@@ -19,8 +19,6 @@ import javafx.scene.control.TextField;
 public class FXMLAdminUsuariosController implements Initializable {
 
     @FXML
-    private TableView<?> tvEmpresas;
-    @FXML
     private TableColumn<?, ?> tcNombre;
     @FXML
     private TableColumn<?, ?> tcApellidoPat;
@@ -34,6 +32,8 @@ public class FXMLAdminUsuariosController implements Initializable {
     private TextField tfBusqueda;
     @FXML
     private Label lbUsuarioSesion;
+    @FXML
+    private TableView<?> tvUsuarios;
 
     /**
      * Initializes the controller class.

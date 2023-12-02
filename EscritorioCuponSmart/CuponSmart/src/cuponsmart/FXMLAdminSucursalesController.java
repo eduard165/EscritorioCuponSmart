@@ -22,8 +22,6 @@ import javafx.scene.control.TableView;
 public class FXMLAdminSucursalesController implements Initializable {
 
     @FXML
-    private TableView<?> tvEmpresas;
-    @FXML
     private TableColumn<?, ?> tcNombreSucursal;
     @FXML
     private TableColumn<?, ?> tcEncargado;
@@ -35,6 +33,8 @@ public class FXMLAdminSucursalesController implements Initializable {
     private TableColumn<?, ?> tcRepLegal;
     @FXML
     private Label lbUsuarioSesion;
+    @FXML
+    private TableView<?> tvSucursales;
 
     /**
      * Initializes the controller class.
