@@ -51,17 +51,22 @@
             </Label>
          </children>
       </Pane>
-      <Button layoutX="326.0" layoutY="202.0" mnemonicParsing="false" onAction="#btnRegistroSucursal" prefHeight="27.0" prefWidth="117.0" style="-fx-background-color: #5125ad; -fx-border-color: #000000}; -fx-border-radius: 20; -fx-background-radius: 20;" text="Registrar" textFill="WHITE">
+      <Button layoutX="291.0" layoutY="202.0" mnemonicParsing="false" onAction="#btnRegistroSucursal" prefHeight="27.0" prefWidth="117.0" style="-fx-background-color: #5125ad; -fx-border-color: #000000}; -fx-border-radius: 20; -fx-background-radius: 20;" text="Registrar" textFill="WHITE">
          <font>
             <Font name="Verdana Bold" size="10.0" />
          </font>
       </Button>
-      <Button layoutX="508.0" layoutY="202.0" mnemonicParsing="false" onAction="#btnEdicionSucursal" prefHeight="27.0" prefWidth="117.0" style="-fx-background-color: #5125ad; -fx-border-color: #000000}; -fx-border-radius: 20; -fx-background-radius: 20;" text="Editar" textFill="WHITE">
+      <Button layoutX="449.0" layoutY="202.0" mnemonicParsing="false" onAction="#btnEdicionSucursal" prefHeight="27.0" prefWidth="117.0" style="-fx-background-color: #5125ad; -fx-border-color: #000000}; -fx-border-radius: 20; -fx-background-radius: 20;" text="Editar" textFill="WHITE">
          <font>
             <Font name="Verdana Bold" size="10.0" />
          </font>
       </Button>
-      <Button layoutX="724.0" layoutY="202.0" mnemonicParsing="false" onAction="#btnEliminarSucursal" prefHeight="27.0" prefWidth="117.0" style="-fx-background-color: #5125ad; -fx-border-color: #000000}; -fx-border-radius: 20; -fx-background-radius: 20;" text="Eliminar" textFill="WHITE">
+      <Button layoutX="592.0" layoutY="202.0" mnemonicParsing="false" onAction="#btnEliminarSucursal" prefHeight="27.0" prefWidth="117.0" style="-fx-background-color: #5125ad; -fx-border-color: #000000}; -fx-border-radius: 20; -fx-background-radius: 20;" text="Eliminar" textFill="WHITE">
+         <font>
+            <Font name="Verdana Bold" size="10.0" />
+         </font>
+      </Button>
+      <Button layoutX="731.0" layoutY="202.0" mnemonicParsing="false" onAction="#btnIrFormularioDomicilio" prefHeight="27.0" prefWidth="140.0" style="-fx-background-color: #5125ad; -fx-border-color: #000000}; -fx-border-radius: 20; -fx-background-radius: 20;" text="Domicilio de Sucursal" textFill="WHITE">
          <font>
             <Font name="Verdana Bold" size="10.0" />
          </font>

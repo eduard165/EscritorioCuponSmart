@@ -10,10 +10,10 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="625.0" prefWidth="882.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cuponsmart.FXMLInicioSesionController">
+<AnchorPane id="AnchorPane" prefHeight="614.0" prefWidth="881.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cuponsmart.FXMLInicioSesionController">
     <children>
         <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="631.0" layoutY="-1.0" stroke="WHITE" strokeType="INSIDE" width="425.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="640.0" layoutY="-1.0" stroke="WHITE" strokeType="INSIDE" width="425.0">
          <fill>
             <LinearGradient endX="1.0" endY="0.5714285714285715">
                <stops>

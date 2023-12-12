@@ -64,5 +64,9 @@ public class FXMLAdminEmpresasController implements Initializable {
     private void btnEliminarEmpresa(ActionEvent event) {
     }
 
+    @FXML
+    private void btnIrFormularioDomicilio(ActionEvent event) {
+    }
+
     
 }

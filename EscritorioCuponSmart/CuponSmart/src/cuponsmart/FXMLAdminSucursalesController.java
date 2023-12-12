@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.image.ImageView;
 
 /**
  * FXML Controller class
@@ -35,6 +36,8 @@ public class FXMLAdminSucursalesController implements Initializable {
     private Label lbUsuarioSesion;
     @FXML
     private TableView<?> tvSucursales;
+    @FXML
+    private ImageView ivUsuarioSesionFoto;
 
     /**
      * Initializes the controller class.
@@ -58,6 +61,10 @@ public class FXMLAdminSucursalesController implements Initializable {
 
     @FXML
     private void btnEliminarSucursal(ActionEvent event) {
+    }
+
+    @FXML
+    private void btnIrFormularioDomicilio(ActionEvent event) {
     }
     
 }
