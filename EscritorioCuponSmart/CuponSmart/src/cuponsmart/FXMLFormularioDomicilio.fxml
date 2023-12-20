@@ -39,7 +39,10 @@
                <font>
                   <Font name="Segoe UI Bold" size="15.0" />
                </font></Button>
-            <Button layoutX="336.0" layoutY="386.0" mnemonicParsing="false" onAction="#btnCancelar" style="-fx-background-color: #8da7df; -fx-border-color: #000000}; -fx-border-radius: 30; -fx-background-radius: 30;" text="Cancelar" />
+            <Button layoutX="336.0" layoutY="386.0" mnemonicParsing="false" onAction="#btnCancelar" style="-fx-background-color: #8da7df; -fx-border-color: #000000}; -fx-border-radius: 30; -fx-background-radius: 30;" text="Cancelar">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></Button>
          </children>
       </Pane>
    </children>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="292.0" prefWidth="458.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="cuponsmart.FXMLVentajaCanjeCuponController">
+   <children>
+      <TextField fx:id="tfCodigoPromo" layoutX="155.0" layoutY="121.0" />
+      <Button layoutX="156.0" layoutY="210.0" mnemonicParsing="false" onAction="#btnCanjear" text="Canjear" />
+      <Button layoutX="249.0" layoutY="210.0" mnemonicParsing="false" onAction="#btnCancelar" text="Cancelar" />
+      <Label layoutX="156.0" layoutY="71.0" text="Ingresa el código del cupón" />
+      <Label fx:id="lbError" layoutX="215.0" layoutY="155.0" textFill="#f51d1d" />
+   </children>
+</AnchorPane>
