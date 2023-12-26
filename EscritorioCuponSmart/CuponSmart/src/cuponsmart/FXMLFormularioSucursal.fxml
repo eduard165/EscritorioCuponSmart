@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -11,28 +13,41 @@
    <children>
       <Pane prefHeight="799.0" prefWidth="857.0" style="-fx-background-color: #5125ad;">
          <children>
-            <Text fill="WHITE" layoutX="265.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Por favor, ingrese los datos de la promoción">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="805.0" layoutY="-4.0" stroke="BLACK" strokeType="INSIDE" width="857.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="0.7281553398058253" startX="0.6553398058252426" startY="0.10194174757281553">
+                     <stops>
+                        <Stop color="#4824b5" />
+                        <Stop color="#c638bf" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Rectangle>
+            <Text fill="WHITE" layoutX="235.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Por favor, ingrese los datos de la sucursal">
                <font>
-                  <Font name="Segoe UI Black" size="15.0" />
+                  <Font name="Yu Gothic Bold" size="19.0" />
                </font>
             </Text>
-            <GridPane layoutX="64.0" layoutY="104.0" prefHeight="197.0" prefWidth="471.0">
+            <GridPane layoutX="166.0" layoutY="110.0" prefHeight="183.0" prefWidth="471.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="206.0" minWidth="10.0" prefWidth="177.0" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="266.0" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints maxHeight="61.0" minHeight="10.0" prefHeight="39.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="93.0" minHeight="10.0" prefHeight="39.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="103.0" minHeight="10.0" prefHeight="101.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="61.0" minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="93.0" minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="103.0" minHeight="10.0" prefHeight="54.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="103.0" minHeight="10.0" prefHeight="42.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <TextField fx:id="tfNombrePromocion" GridPane.columnIndex="1" />
-                  <TextField fx:id="tfRestricciones" prefHeight="31.0" prefWidth="237.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Label text="Nombre de promoción" textFill="WHITE" />
-                  <Label text="Restricciones" textFill="WHITE" GridPane.rowIndex="1" />
-                  <Label text="Descripción" textFill="WHITE" GridPane.rowIndex="2" />
-                  <TextArea fx:id="taDescripción" prefHeight="200.0" prefWidth="200.0" promptText="Aquí va una descripción." GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="tfNombreSucursal" prefHeight="30.0" prefWidth="280.0" GridPane.columnIndex="1" />
+                  <TextField fx:id="tfNombreComercial" prefHeight="31.0" prefWidth="237.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label text="Nombre de la sucursal" textFill="WHITE" />
+                  <Label text="Nombre comercial" textFill="WHITE" GridPane.rowIndex="1" />
+                  <Label text="Nombre de encargado" textFill="WHITE" GridPane.rowIndex="2" />
+                  <TextField fx:id="tfNombreEncargado" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label text="Empresa" textFill="WHITE" GridPane.rowIndex="3" />
+                  <ComboBox prefHeight="31.0" prefWidth="232.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                </children>
             </GridPane>
             <Button layoutX="231.0" layoutY="694.0" mnemonicParsing="false" onAction="#btnGuardarPromocion" prefHeight="58.0" prefWidth="137.0" style="-fx-background-color: #8da7df; -fx-border-color: #000000}; -fx-border-radius: 30; -fx-background-radius: 30;" text="Guardar">
@@ -43,24 +58,7 @@
                <font>
                   <Font name="System Bold" size="18.0" />
                </font></Button>
-            <GridPane layoutX="600.0" layoutY="104.0" prefHeight="120.0" prefWidth="211.0">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <DatePicker fx:id="dpFechaInicio" GridPane.rowIndex="1" />
-                  <Label text="Fecha de inicio" textFill="WHITE" />
-                  <Label text="Fecha de caducidad" textFill="WHITE" GridPane.rowIndex="2" />
-                  <DatePicker fx:id="dpFechaCaducidad" GridPane.rowIndex="3" />
-               </children>
-            </GridPane>
-            <GridPane layoutX="131.0" layoutY="366.0" prefHeight="175.0" prefWidth="312.0">
+            <GridPane layoutX="173.0" layoutY="374.0" prefHeight="175.0" prefWidth="471.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="158.0" minWidth="10.0" prefWidth="158.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="219.0" minWidth="10.0" prefWidth="154.0" />
@@ -71,16 +69,15 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label text="Categoría" textFill="WHITE" />
-                  <Label text="Tipo de promoción" textFill="WHITE" GridPane.rowIndex="1" />
-                  <ComboBox fx:id="cbCategoria" prefWidth="150.0" GridPane.columnIndex="1" />
-                  <ComboBox fx:id="cbTipoPromocion" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Label text="Descuento" textFill="WHITE" GridPane.rowIndex="2" />
-                  <TextField fx:id="tfDescuento" prefHeight="31.0" prefWidth="174.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label text="E-mail" textFill="WHITE" />
+                  <Label text="Latitud" textFill="WHITE" GridPane.rowIndex="1" />
+                  <Label text="Longitud" textFill="WHITE" GridPane.rowIndex="2" />
+                  <TextField fx:id="tfLatitud" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="tfLongitud" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="tfEmailSucursal" GridPane.columnIndex="1" />
                </children>
             </GridPane>
          </children>
       </Pane>
    </children>
 </AnchorPane>
-

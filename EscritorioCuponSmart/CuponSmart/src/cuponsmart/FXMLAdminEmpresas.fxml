@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -8,15 +10,15 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.image.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="655.0" prefWidth="971.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cuponsmart.FXMLAdminEmpresasController">
+<AnchorPane id="AnchorPane" prefHeight="764.0" prefWidth="1271.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cuponsmart.FXMLAdminEmpresasController">
    <children>
       
-      <Label layoutX="408.0" layoutY="39.0" text="Lista de Empresas">
+      <Label layoutX="476.0" layoutY="40.0" text="Lista de Empresas">
          <font>
             <Font name="Ebrima Bold" size="36.0" />
          </font>
       </Label>
-      <TableView fx:id="tvEmpresas" layoutX="227.0" layoutY="244.0" prefHeight="364.0" prefWidth="730.0" style="-fx-background-color: 9C27B0;">
+      <TableView fx:id="tvEmpresas" layoutX="260.0" layoutY="245.0" prefHeight="395.0" prefWidth="804.0" style="-fx-background-color: 9C27B0;">
         <columns>
           <TableColumn fx:id="tcRFC" prefWidth="107.0" text="RFC" />
           <TableColumn fx:id="tcNombre" prefWidth="104.0" text="Nombre" />
@@ -26,51 +28,56 @@
             <TableColumn fx:id="tcRepLegal" prefWidth="137.0" text="Rep. Legal" />
         </columns>
       </TableView>
-      <TextField fx:id="tfBusquedaEmpresa" layoutX="416.0" layoutY="142.0" prefHeight="31.0" prefWidth="283.0" />
-      <Label layoutX="347.0" layoutY="148.0" text="Buscar">
+      <TextField fx:id="tfBusquedaEmpresa" layoutX="506.0" layoutY="142.0" prefHeight="31.0" prefWidth="283.0" style="-fx-background-color: transparent; -fx-border-color: #a836a1; -fx-background-radius: 30; -fx-border-radius: 30;" />
+      <Button fx:id="btnRegistroEmpresa" layoutX="1112.0" layoutY="265.0" mnemonicParsing="false" onAction="#btnRegistroEmpresa" prefHeight="58.0" prefWidth="111.0" style="-fx-background-color: #0000;" textFill="WHITE">
          <font>
-            <Font name="Ebrima Bold" size="15.0" />
+            <Font name="Verdana Bold" size="10.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnEdicionEmpresa" layoutX="1112.0" layoutY="353.0" mnemonicParsing="false" onAction="#btnEdicionEmpresa" prefHeight="58.0" prefWidth="111.0" style="-fx-background-color: #0000; -fx-border-radius: 20; -fx-background-radius: 20;" textFill="WHITE">
+         <font>
+            <Font name="Verdana Bold" size="10.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnEliminarEmpresa" layoutX="1109.0" layoutY="440.0" mnemonicParsing="false" onAction="#btnEliminarEmpresa" prefHeight="58.0" prefWidth="117.0" style="-fx-background-color: #0000; -fx-border-radius: 20; -fx-background-radius: 20;" textFill="WHITE">
+         <font>
+            <Font name="Verdana Bold" size="10.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnFormularioDom" layoutX="1109.0" layoutY="535.0" mnemonicParsing="false" onAction="#btnIrFormularioDomicilio" prefHeight="58.0" prefWidth="117.0" style="-fx-background-color: #0000; -fx-border-radius: 20; -fx-background-radius: 20;" textFill="WHITE">
+         <font>
+            <Font name="Verdana Bold" size="10.0" />
+         </font>
+      </Button>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="772.0" layoutX="-2.0" layoutY="-8.0" strokeType="INSIDE" strokeWidth="10.0" width="238.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0" startX="0.616504854368932" startY="0.29126213592233">
+               <stops>
+                  <Stop color="#6b0fbc" />
+                  <Stop color="#ab3262" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill>
+         <stroke>
+            <LinearGradient endX="1.0" endY="1.0" startX="0.616504854368932" startY="0.2135922330097087">
+               <stops>
+                  <Stop color="#981fff" />
+                  <Stop color="#c95454" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </stroke>
+      </Rectangle>
+      <ImageView fx:id="ivUsuarioSesionFoto" fitHeight="150.0" fitWidth="130.0" layoutX="52.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="72.0" layoutY="224.0" text="Usuario:" textFill="WHITE">
+         <font>
+            <Font name="Yu Gothic Bold" size="22.0" />
          </font>
       </Label>
-      <Pane prefHeight="655.0" prefWidth="186.0" style="-fx-background-color: #5125ad;">
-         <children>
-            <Button layoutX="25.0" layoutY="575.0" mnemonicParsing="false" onAction="#btnMenuPrincipal" prefHeight="27.0" prefWidth="117.0" style="-fx-background-color: #5125ad; -fx-border-color: #000000}; -fx-border-radius: 20; -fx-background-radius: 20;" text="Regresar a menú" textFill="WHITE">
-               <font>
-                  <Font name="Verdana Bold" size="10.0" />
-               </font>
-            </Button>
-            <ImageView fx:id="ivUsuarioSesionFoto" fitHeight="128.0" fitWidth="117.0" layoutX="40.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true" />
-            <Label layoutX="69.0" layoutY="193.0" text="Usuario:" textFill="WHITE">
-               <font>
-                  <Font name="Tahoma Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label fx:id="lbUsuarioSesion" layoutX="49.0" layoutY="224.0" prefHeight="18.0" prefWidth="98.0" textFill="WHITE">
-               <font>
-                  <Font name="Tahoma" size="14.0" />
-               </font>
-            </Label>
-         </children>
-      </Pane>
-      <Button layoutX="289.0" layoutY="199.0" mnemonicParsing="false" onAction="#btnRegistroEmpresa" prefHeight="27.0" prefWidth="117.0" style="-fx-background-color: #5125ad; -fx-border-color: #000000}; -fx-border-radius: 20; -fx-background-radius: 20;" text="Registrar" textFill="WHITE">
-         <font>
-            <Font name="Verdana Bold" size="10.0" />
-         </font>
-      </Button>
-      <Button layoutX="427.0" layoutY="198.0" mnemonicParsing="false" onAction="#btnEdicionEmpresa" prefHeight="27.0" prefWidth="117.0" style="-fx-background-color: #5125ad; -fx-border-color: #000000}; -fx-border-radius: 20; -fx-background-radius: 20;" text="Editar " textFill="WHITE">
-         <font>
-            <Font name="Verdana Bold" size="10.0" />
-         </font>
-      </Button>
-      <Button layoutX="569.0" layoutY="198.0" mnemonicParsing="false" onAction="#btnEliminarEmpresa" prefHeight="27.0" prefWidth="117.0" style="-fx-background-color: #5125ad; -fx-border-color: #000000}; -fx-border-radius: 20; -fx-background-radius: 20;" text="Eliminar" textFill="WHITE">
-         <font>
-            <Font name="Verdana Bold" size="10.0" />
-         </font>
-      </Button>
-      <Button layoutX="707.0" layoutY="199.0" mnemonicParsing="false" onAction="#btnIrFormularioDomicilio" prefHeight="27.0" prefWidth="142.0" style="-fx-background-color: #5125ad; -fx-border-color: #000000}; -fx-border-radius: 20; -fx-background-radius: 20;" text="Domicilio de Empresa" textFill="WHITE">
-         <font>
-            <Font name="Verdana Bold" size="10.0" />
-         </font>
-      </Button>
+      <Label fx:id="lbUsuarioSesion" layoutX="79.0" layoutY="265.0" prefHeight="21.0" prefWidth="77.0" textFill="WHITE" />
+      <ImageView fitHeight="39.0" fitWidth="47.0" layoutX="797.0" layoutY="139.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../recursos/buscar.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

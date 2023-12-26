@@ -1,15 +1,21 @@
 
 package cuponsmart;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import modelo.pojo.Usuario;
 
 /**
@@ -18,7 +24,7 @@ import modelo.pojo.Usuario;
  * @author eduar
  */
 public class FXMLMenuPrincipalController implements Initializable {
-    private Usuario usuario;
+    private Usuario usuarioSesion;
     @FXML
     private ImageView ivUsuarioSesionFoto;
     @FXML
@@ -47,16 +53,52 @@ public class FXMLMenuPrincipalController implements Initializable {
        
         
     }    
-    public void inicializarMenu(Usuario usuario) {
-        this.usuario = usuario;
+    public void inicializarMenu(Usuario usuarioSesion) {
+        this.usuarioSesion = usuarioSesion;
+        lbUsuarioSesion.setText(usuarioSesion.getUsername());
     }
 
     @FXML
     private void btnIrAdminSucursales(ActionEvent event) {
+        try{
+            FXMLLoader vistaLoad = new FXMLLoader(getClass().getResource("FXMLAdminSucursales.fxml"));
+            Parent vista = vistaLoad.load();
+            
+           // FXMLAdminUsuariosController controlador = vistaLoad.getController();
+           // controlador.inicializarInformacion(usuarioSesion.getRolID());
+           
+           Stage stage = new Stage();
+           Scene escena = new Scene(vista);
+           stage.setScene(escena);
+           stage.setTitle("Administrador de sucursales");
+           stage.initModality(Modality.APPLICATION_MODAL);
+           stage.setResizable(false);
+           stage.showAndWait();
+            
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+        
     }
 
     @FXML
     private void btnIrAdminEmpresas(ActionEvent event) {
+        try{
+            FXMLLoader vistaLoad = new FXMLLoader(getClass().getResource("FXMLAdminEmpresas.fxml"));
+            Parent vista = vistaLoad.load();
+            
+           // FXMLAdminUsuariosController controlador = vistaLoad.getController();
+           // controlador.inicializarInformacion(usuarioSesion.getRolID());
+           Stage stage = new Stage();
+           Scene escena = new Scene(vista);
+           stage.setScene(escena);
+           stage.setTitle("Administrador de empresas");
+           stage.initModality(Modality.APPLICATION_MODAL);
+           stage.showAndWait();
+            
+        }catch(IOException e){
+            e.printStackTrace();
+        }
     }
 
 
@@ -66,24 +108,76 @@ public class FXMLMenuPrincipalController implements Initializable {
 
     @FXML
     private void btnIrAdminUsuarios(ActionEvent event) {
+        try{
+            FXMLLoader vistaLoad = new FXMLLoader(getClass().getResource("FXMLAdminUsuarios.fxml"));
+            Parent vista = vistaLoad.load();
+            
+           // FXMLAdminUsuariosController controlador = vistaLoad.getController();
+           // controlador.inicializarInformacion(usuarioSesion.getRolID());
+           
+           Stage stage = new Stage();
+           Scene escena = new Scene(vista);
+           stage.setScene(escena);
+           stage.setTitle("Administrador de usuarios");
+           stage.initModality(Modality.APPLICATION_MODAL);
+           stage.setResizable(false);
+           stage.showAndWait();
+            
+        }catch(IOException e){
+            e.printStackTrace();
+        }
     }
 
     @FXML
     private void btnIrAdminPromociones(ActionEvent event) {
+        try{
+            FXMLLoader vistaLoad = new FXMLLoader(getClass().getResource("FXMLAdminPromociones.fxml"));
+            Parent vista = vistaLoad.load();
+            
+           // FXMLAdminUsuariosController controlador = vistaLoad.getController();
+           // controlador.inicializarInformacion(usuarioSesion.getRolID());
+           
+           Stage stage = new Stage();
+           Scene escena = new Scene(vista);
+           stage.setScene(escena);
+           stage.setTitle("Administrador de promociones");
+           stage.initModality(Modality.APPLICATION_MODAL);
+           stage.setResizable(false);
+           stage.showAndWait();
+            
+        }catch(IOException e){
+            e.printStackTrace();
+        }
     }
     
 
     @FXML
     private void btnIrAdminCupones(ActionEvent event) {
+        try{
+            FXMLLoader vistaLoad = new FXMLLoader(getClass().getResource("FXMLAdminCupones.fxml"));
+            Parent vista = vistaLoad.load();
+            
+           // FXMLAdminUsuariosController controlador = vistaLoad.getController();
+           // controlador.inicializarInformacion(usuarioSesion.getRolID());
+           
+           Stage stage = new Stage();
+           Scene escena = new Scene(vista);
+           stage.setScene(escena);
+           stage.setTitle("Administrador de promociones");
+           stage.initModality(Modality.APPLICATION_MODAL);
+           stage.setResizable(false);
+           stage.showAndWait();
+            
+        }catch(IOException e){
+            e.printStackTrace();
+        }
     }
     
     
     
     public void inicializarGraficosMenu(){
-        //Iconos de botones
     Image icEmpresa = new Image("recursos/empresa.png");
     ImageView imgEmpresa = new ImageView(icEmpresa);
-    
     
     Image icSucursal = new Image("recursos/sucursal.png");
     ImageView imgSucursal  = new ImageView(icSucursal);
@@ -96,7 +190,6 @@ public class FXMLMenuPrincipalController implements Initializable {
     
     Image icCupon = new Image("recursos/voucher.png");
     ImageView imgCupon = new ImageView(icCupon);
-        
         
         imgEmpresa.setFitHeight(80);
         imgEmpresa.setPreserveRatio(true);
@@ -118,8 +211,6 @@ public class FXMLMenuPrincipalController implements Initializable {
         btnIrAdminPromociones.setGraphic(imgPromocion);
         btnIrAdminCupones.setGraphic(imgCupon);
         
-    
-    
     }
    
     

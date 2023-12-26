@@ -23,7 +23,7 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-      <Text fill="WHITE" layoutX="165.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Por favor, introduzca los datos del usuario">
+      <Text fill="WHITE" layoutX="185.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Por favor, introduzca los datos del usuario">
          <font>
             <Font name="Segoe UI Bold" size="18.0" />
          </font>
@@ -71,19 +71,19 @@
             <Insets bottom="10.0" />
          </padding>
       </GridPane>
-      <Label layoutX="306.0" layoutY="126.0" text="Datos personales" textFill="WHITE" underline="true">
+      <Label layoutX="306.0" layoutY="111.0" text="Datos personales" textFill="WHITE" underline="true">
          <font>
             <Font name="Tahoma" size="13.0" />
          </font></Label>
-      <Button layoutX="438.0" layoutY="724.0" mnemonicParsing="false" onAction="#btnGuardarUsuario" prefHeight="41.0" prefWidth="105.0" style="-fx-background-color: #8da7df; -fx-border-color: #000000}; -fx-border-radius: 30; -fx-background-radius: 30;" text="Guardar">
+      <Button layoutX="438.0" layoutY="703.0" mnemonicParsing="false" onAction="#btnGuardarUsuario" prefHeight="62.0" prefWidth="130.0" style="-fx-background-color: #2085e3; -fx-background-radius: 30;" text="Guardar">
          <font>
-            <Font name="SansSerif Bold" size="14.0" />
+            <Font name="Yu Gothic Bold" size="19.0" />
          </font></Button>
-      <Button layoutX="176.0" layoutY="724.0" mnemonicParsing="false" onAction="#btnCancelar" prefHeight="41.0" prefWidth="105.0" style="-fx-background-color: #8da7df; -fx-border-color: #000000}; -fx-border-radius: 30; -fx-background-radius: 30;" text="Cancelar">
+      <Button layoutX="176.0" layoutY="703.0" mnemonicParsing="false" onAction="#btnCancelar" prefHeight="62.0" prefWidth="121.0" style="-fx-background-color: #d4428d; -fx-background-radius: 30;" text="Cancelar">
          <font>
-            <Font name="SansSerif Bold" size="14.0" />
+            <Font name="Yu Gothic Bold" size="18.0" />
          </font></Button>
-      <GridPane hgap="10.0" layoutX="185.0" layoutY="387.0" prefHeight="169.0" prefWidth="360.0" vgap="10.0">
+      <GridPane hgap="10.0" layoutX="185.0" layoutY="387.0" prefHeight="149.0" prefWidth="358.0" vgap="10.0">
          <children>
             <TextField fx:id="tfUsuario" prefHeight="31.0" prefWidth="298.0" promptText="000000000" GridPane.rowIndex="1" />
             <TextField fx:id="tfPassword" prefHeight="30.0" prefWidth="308.0" promptText="empresa@google.com" GridPane.rowIndex="3" />
@@ -106,11 +106,9 @@
          </padding>
          <rowConstraints>
             <RowConstraints maxHeight="49.0" minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="84.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="87.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="84.0" minHeight="0.0" prefHeight="36.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="87.0" minHeight="0.0" prefHeight="19.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="87.0" minHeight="10.0" prefHeight="27.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="54.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="54.0" minHeight="10.0" prefHeight="28.0" vgrow="SOMETIMES" />
          </rowConstraints>
       </GridPane>
       <Label layoutX="299.0" layoutY="359.0" text="Datos de usuario" textFill="WHITE" underline="true" />

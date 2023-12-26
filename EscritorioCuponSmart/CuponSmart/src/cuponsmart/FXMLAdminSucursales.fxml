@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -8,14 +10,14 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.image.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="655.0" prefWidth="971.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cuponsmart.FXMLAdminSucursalesController">
+<AnchorPane id="AnchorPane" prefHeight="727.0" prefWidth="1216.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cuponsmart.FXMLAdminSucursalesController">
    <children>
-      <Label layoutX="408.0" layoutY="39.0" text="Lista de Sucursales">
+      <Label layoutX="511.0" layoutY="60.0" text="Lista de Sucursales">
          <font>
             <Font name="Ebrima Bold" size="36.0" />
          </font>
       </Label>
-      <TableView fx:id="tvSucursales" layoutX="227.0" layoutY="244.0" prefHeight="364.0" prefWidth="730.0" style="-fx-background-color: 9C27B0;">
+      <TableView fx:id="tvSucursales" layoutX="227.0" layoutY="244.0" prefHeight="432.0" prefWidth="815.0" style="-fx-background-color: 9C27B0;">
         <columns>
           <TableColumn fx:id="tcNombreSucursal" prefWidth="179.0" text="Nombre" />
           <TableColumn fx:id="tcEncargado" prefWidth="220.0" text="Encargado" />
@@ -24,52 +26,57 @@
             <TableColumn fx:id="tcRepLegal" minWidth="0.0" prefWidth="0.0" />
         </columns>
       </TableView>
-      <TextField layoutX="425.0" layoutY="143.0" prefHeight="31.0" prefWidth="283.0" />
-      <Label layoutX="361.0" layoutY="149.0" text="Buscar">
-         <font>
-            <Font name="Ebrima Bold" size="15.0" />
-         </font>
-      </Label>
+      <TextField fx:id="tfBusquedaSucursal" layoutX="518.0" layoutY="154.0" prefHeight="31.0" prefWidth="283.0" style="-fx-background-color: transparent; -fx-border-color: #a836a1; -fx-background-radius: 30; -fx-border-radius: 30;" />
       
-       <Pane layoutX="-4.0" prefHeight="655.0" prefWidth="196.0" style="-fx-background-color: #5125ad;">
+       <Pane layoutX="-4.0" prefHeight="727.0" prefWidth="218.0" style="-fx-background-color: #5125ad;">
          <children>
-            <Button layoutX="25.0" layoutY="585.0" mnemonicParsing="false" onAction="#btnMenuPrincipal" prefHeight="27.0" prefWidth="117.0" style="-fx-background-color: #5125ad; -fx-border-color: #000000}; -fx-border-radius: 20; -fx-background-radius: 20;" text="Regresar a menú" textFill="WHITE">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="727.0" layoutX="1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="218.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="#361dc3" />
+                        <Stop color="#da2485" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Rectangle>
+            <ImageView fx:id="ivUsuarioSesionFoto" fitHeight="141.0" fitWidth="130.0" layoutX="45.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true" />
+            <Label layoutX="71.0" layoutY="241.0" text="Usuario:" textFill="WHITE">
                <font>
-                  <Font name="Verdana Bold" size="10.0" />
-               </font>
-            </Button>
-            <ImageView fx:id="ivUsuarioSesionFoto" fitHeight="99.0" fitWidth="117.0" layoutX="40.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true" />
-            <Label layoutX="69.0" layoutY="193.0" text="Usuario:" textFill="WHITE">
-               <font>
-                  <Font name="Tahoma Bold" size="14.0" />
+                  <Font name="Yu Gothic Bold" size="19.0" />
                </font>
             </Label>
-            <Label fx:id="lbUsuarioSesion" layoutX="83.0" layoutY="226.0" textFill="WHITE">
+            <Label fx:id="lbUsuarioSesion" layoutX="71.0" layoutY="273.0" prefHeight="18.0" prefWidth="78.0" textFill="WHITE">
                <font>
                   <Font name="Tahoma" size="14.0" />
                </font>
             </Label>
          </children>
       </Pane>
-      <Button layoutX="291.0" layoutY="202.0" mnemonicParsing="false" onAction="#btnRegistroSucursal" prefHeight="27.0" prefWidth="117.0" style="-fx-background-color: #5125ad; -fx-border-color: #000000}; -fx-border-radius: 20; -fx-background-radius: 20;" text="Registrar" textFill="WHITE">
+      <Button fx:id="btnRegistroSuc" layoutX="1069.0" layoutY="258.0" mnemonicParsing="false" onAction="#btnRegistroSucursal" prefHeight="57.0" prefWidth="117.0" style="-fx-background-color: #0000;" textFill="WHITE">
          <font>
             <Font name="Verdana Bold" size="10.0" />
          </font>
       </Button>
-      <Button layoutX="449.0" layoutY="202.0" mnemonicParsing="false" onAction="#btnEdicionSucursal" prefHeight="27.0" prefWidth="117.0" style="-fx-background-color: #5125ad; -fx-border-color: #000000}; -fx-border-radius: 20; -fx-background-radius: 20;" text="Editar" textFill="WHITE">
+      <Button fx:id="btnEdicionSuc" layoutX="1070.0" layoutY="341.0" mnemonicParsing="false" onAction="#btnEdicionSucursal" prefHeight="57.0" prefWidth="117.0" style="-fx-background-color: #0000;" textFill="WHITE">
          <font>
             <Font name="Verdana Bold" size="10.0" />
          </font>
       </Button>
-      <Button layoutX="592.0" layoutY="202.0" mnemonicParsing="false" onAction="#btnEliminarSucursal" prefHeight="27.0" prefWidth="117.0" style="-fx-background-color: #5125ad; -fx-border-color: #000000}; -fx-border-radius: 20; -fx-background-radius: 20;" text="Eliminar" textFill="WHITE">
+      <Button fx:id="btnEliminarSuc" layoutX="1069.0" layoutY="420.0" mnemonicParsing="false" onAction="#btnEliminarSucursal" prefHeight="57.0" prefWidth="117.0" style="-fx-background-color: #0000;" textFill="WHITE">
          <font>
             <Font name="Verdana Bold" size="10.0" />
          </font>
       </Button>
-      <Button layoutX="731.0" layoutY="202.0" mnemonicParsing="false" onAction="#btnIrFormularioDomicilio" prefHeight="27.0" prefWidth="140.0" style="-fx-background-color: #5125ad; -fx-border-color: #000000}; -fx-border-radius: 20; -fx-background-radius: 20;" text="Domicilio de Sucursal" textFill="WHITE">
+      <Button fx:id="btnFormularioDom" layoutX="1069.0" layoutY="505.0" mnemonicParsing="false" onAction="#btnIrFormularioDomicilio" prefHeight="47.0" prefWidth="117.0" style="-fx-background-color: #0000;" textFill="WHITE">
          <font>
             <Font name="Verdana Bold" size="10.0" />
          </font>
       </Button>
+      <ImageView fitHeight="38.0" fitWidth="45.0" layoutX="808.0" layoutY="152.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../recursos/buscar.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

@@ -52,6 +52,7 @@ public class FXMLInicioSesionController implements Initializable {
             verificarSesion(usuario);
         }else{
             //agregar error en los labels de user y password 
+            
         }
     }
     private void verificarSesion(Usuario usuario) {

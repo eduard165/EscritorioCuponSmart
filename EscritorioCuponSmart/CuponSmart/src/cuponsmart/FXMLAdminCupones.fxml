@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -9,10 +10,11 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cuponsmart.FXMLAdminCuponesController">
    <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9c1a94" height="424.0" stroke="BLACK" strokeType="INSIDE" width="637.0" />
       <Button layoutX="245.0" layoutY="324.0" mnemonicParsing="false" onAction="#btnCanjearCupon" text="Canjear un cupón" />
-      <Text layoutX="205.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lista de cupones">
+      <Text fill="WHITE" layoutX="230.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lista de cupones">
          <font>
-            <Font size="24.0" />
+            <Font name="Yu Gothic UI Semibold" size="24.0" />
          </font>
       </Text>
       <TableView layoutX="46.0" layoutY="106.0" prefHeight="200.0" prefWidth="508.0">

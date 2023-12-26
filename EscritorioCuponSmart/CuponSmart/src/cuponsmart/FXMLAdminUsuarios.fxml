@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -8,64 +10,85 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.image.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="655.0" prefWidth="971.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cuponsmart.FXMLAdminUsuariosController">
+<AnchorPane id="AnchorPane" prefHeight="742.0" prefWidth="1176.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cuponsmart.FXMLAdminUsuariosController">
    <children>
-      <Label layoutX="408.0" layoutY="39.0" text="Lista de Usuarios">
+      <Label layoutX="433.0" layoutY="43.0" text="Lista de Usuarios">
          <font>
-            <Font name="Ebrima Bold" size="36.0" />
+            <Font name="Yu Gothic Bold" size="48.0" />
          </font>
       </Label>
-      <TableView fx:id="tvUsuarios" layoutX="227.0" layoutY="244.0" prefHeight="364.0" prefWidth="719.0" style="-fx-background-color: 9C27B0;">
+      <TableView fx:id="tvUsuarios" layoutX="254.0" layoutY="275.0" prefHeight="408.0" prefWidth="798.0" style="-fx-background-color: 9C27B0;">
         <columns>
-          <TableColumn fx:id="tcNombre" prefWidth="117.0" text="Nombre" />
-          <TableColumn id="tcApellidoPat" fx:id="tcApellidoPat" prefWidth="124.0" text="Apellido Paterno" />
+          <TableColumn fx:id="tcNombre" prefWidth="141.0" text="Nombre" />
+          <TableColumn id="tcApellidoPat" fx:id="tcApellidoPat" prefWidth="147.0" text="Apellido Paterno" />
             <TableColumn fx:id="tcApellidoMat" prefWidth="145.0" text="Apellido Materno" />
-            <TableColumn fx:id="tcRepLegal" minWidth="0.0" prefWidth="0.0" />
-            <TableColumn prefWidth="113.0" text="Usuario" />
-            <TableColumn fx:id="tcTelefono" prefWidth="122.0" text="Telefono" />
+            <TableColumn fx:id="tcRepLegal" minWidth="0.0" prefWidth="3.0" />
+            <TableColumn prefWidth="127.0" text="Usuario" />
+            <TableColumn fx:id="tcTelefono" prefWidth="143.0" text="Telefono" />
         </columns>
       </TableView>
-      <TextField fx:id="tfBusqueda" layoutX="425.0" layoutY="143.0" prefHeight="31.0" prefWidth="283.0" />
-      <Label layoutX="361.0" layoutY="149.0" text="Buscar">
+      <TextField fx:id="tfBusqueda" layoutX="496.0" layoutY="157.0" prefHeight="31.0" prefWidth="283.0" style="-fx-background-radius: 30; -fx-border-color: #a836a1; -fx-border-radius: 30;">
          <font>
-            <Font name="Ebrima Bold" size="15.0" />
-         </font>
-      </Label>
+            <Font name="Yu Gothic Regular" size="18.0" />
+         </font></TextField>
       
-       <Pane layoutX="-4.0" prefHeight="655.0" prefWidth="196.0" style="-fx-background-color: #5125ad;">
+       <Pane layoutX="-2.0" prefHeight="747.0" prefWidth="200.0" style="-fx-background-color: #5125ad;">
          <children>
-            <Button layoutX="25.0" layoutY="585.0" mnemonicParsing="false" onAction="#btnMenuPrincipal" prefHeight="27.0" prefWidth="117.0" style="-fx-background-color: #5125ad; -fx-border-color: #000000}; -fx-border-radius: 20; -fx-background-radius: 20;" text="Regresar a menú" textFill="WHITE">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="761.0" layoutX="-3.0" layoutY="-4.0" strokeType="INSIDE" strokeWidth="10.0" width="229.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0" startX="0.616504854368932" startY="0.29126213592233">
+                     <stops>
+                        <Stop color="#6b0fbc" />
+                        <Stop color="#ab3262" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </fill>
+               <stroke>
+                  <LinearGradient endX="1.0" endY="1.0" startX="0.616504854368932" startY="0.2135922330097087">
+                     <stops>
+                        <Stop color="#981fff" />
+                        <Stop color="#c95454" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </stroke>
+            </Rectangle>
+            <Button layoutX="31.0" layoutY="626.0" mnemonicParsing="false" onAction="#btnMenuPrincipal" prefHeight="47.0" prefWidth="134.0" style="-fx-background-color: #5125ad; -fx-border-color: #000000}; -fx-border-radius: 20; -fx-background-radius: 20;" text="Regresar a menú" textFill="WHITE">
                <font>
-                  <Font name="Verdana Bold" size="10.0" />
+                  <Font name="Yu Gothic UI Bold" size="14.0" />
                </font>
             </Button>
-            <ImageView fx:id="ivUsuarioSesionFoto" fitHeight="99.0" fitWidth="117.0" layoutX="40.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true" />
-            <Label layoutX="69.0" layoutY="193.0" text="Usuario:" textFill="WHITE">
+            <ImageView fx:id="ivUsuarioSesionFoto" fitHeight="99.0" fitWidth="117.0" layoutX="52.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true" />
+            <Label layoutX="63.0" layoutY="287.0" text="Usuario:" textFill="WHITE">
                <font>
-                  <Font name="Tahoma Bold" size="14.0" />
+                  <Font name="Yu Gothic Bold" size="21.0" />
                </font>
             </Label>
-            <Label fx:id="lbUsuarioSesion" layoutX="83.0" layoutY="226.0" textFill="WHITE">
+            <Label fx:id="lbUsuarioSesion" layoutX="63.0" layoutY="324.0" prefHeight="18.0" prefWidth="72.0" text="usuario" textFill="WHITE">
                <font>
-                  <Font name="Tahoma" size="14.0" />
+                  <Font name="Yu Gothic Regular" size="18.0" />
                </font>
             </Label>
          </children>
       </Pane>
-      <Button layoutX="326.0" layoutY="202.0" mnemonicParsing="false" onAction="#btnRegistroUsuario" prefHeight="27.0" prefWidth="117.0" style="-fx-background-color: #5125ad; -fx-border-color: #000000}; -fx-border-radius: 20; -fx-background-radius: 20;" text="Registrar" textFill="WHITE">
+      <Button fx:id="btnRegistroUsuario" layoutX="1069.0" layoutY="276.0" mnemonicParsing="false" onAction="#btnRegistroUsuario" prefHeight="59.0" prefWidth="102.0" style="-fx-background-color: #0000; -fx-border-radius: 20; -fx-background-radius: 20;" textFill="WHITE">
          <font>
             <Font name="Verdana Bold" size="10.0" />
          </font>
       </Button>
-      <Button layoutX="508.0" layoutY="202.0" mnemonicParsing="false" onAction="#btnEdicionUsuario" prefHeight="27.0" prefWidth="117.0" style="-fx-background-color: #5125ad; -fx-border-color: #000000}; -fx-border-radius: 20; -fx-background-radius: 20;" text="Editar" textFill="WHITE">
+      <Button fx:id="btnEdicionUsuario" layoutX="1069.0" layoutY="362.0" mnemonicParsing="false" onAction="#btnEdicionUsuario" prefHeight="59.0" prefWidth="102.0" style="-fx-border-radius: 20; -fx-background-radius: 20; -fx-background-color: #0000;" textFill="WHITE">
          <font>
             <Font name="Verdana Bold" size="10.0" />
          </font>
       </Button>
-      <Button layoutX="724.0" layoutY="202.0" mnemonicParsing="false" onAction="#btnEliminarUsuario" prefHeight="27.0" prefWidth="117.0" style="-fx-background-color: #5125ad; -fx-border-color: #000000}; -fx-border-radius: 20; -fx-background-radius: 20;" text="Eliminar" textFill="WHITE">
+      <Button fx:id="btnEliminarUsuario" layoutX="1066.0" layoutY="449.0" mnemonicParsing="false" onAction="#btnEliminarUsuario" prefHeight="59.0" prefWidth="109.0" style="-fx-background-color: #0000; -fx-border-radius: 20; -fx-background-radius: 20;" textFill="WHITE">
          <font>
             <Font name="Verdana Bold" size="10.0" />
          </font>
       </Button>
+      <ImageView fitHeight="38.0" fitWidth="59.0" layoutX="792.0" layoutY="156.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../recursos/buscar.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

@@ -13,7 +13,7 @@
 <AnchorPane id="AnchorPane" prefHeight="614.0" prefWidth="881.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cuponsmart.FXMLInicioSesionController">
     <children>
         <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="640.0" layoutY="-1.0" stroke="WHITE" strokeType="INSIDE" width="425.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="660.0" layoutY="-1.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="425.0">
          <fill>
             <LinearGradient endX="1.0" endY="0.5714285714285715">
                <stops>
@@ -24,31 +24,31 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-      <Label layoutX="508.0" layoutY="181.0" text="Para acceder, ingrese sus credenciales">
+      <Label layoutX="508.0" layoutY="160.0" text="Para acceder, ingrese sus credenciales">
          <font>
-            <Font name="Yu Gothic Regular" size="15.0" />
+            <Font name="Yu Gothic Bold" size="15.0" />
          </font>
       </Label>
-      <Text layoutX="495.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenido(a) al sistema de CuponSmart">
+      <Text layoutX="448.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenido(a) al sistema de CuponSmart">
          <font>
-            <Font name="Yu Gothic UI Regular" size="18.0" />
+            <Font name="Yu Gothic UI Light" size="24.0" />
          </font>
       </Text>
       <TextField fx:id="tfUsuario" layoutX="545.0" layoutY="233.0" promptText="Usuario" style="-fx-background-color: transparent; -fx-border-color: #5125ad; -fx-border-width: 0px 0px 2px;">
          <font>
-            <Font name="Yu Gothic Regular" size="15.0" />
+            <Font name="Yu Gothic Regular" size="20.0" />
          </font>
       </TextField>
-      <Label fx:id="lbErrorUsername" layoutX="543.0" layoutY="278.0" textFill="#dd1010" />
-      <Label fx:id="lbErrorPassword" layoutX="544.0" layoutY="337.0" textFill="#dd1010" />
-      <Button layoutX="578.0" layoutY="387.0" mnemonicParsing="false" onAction="#btnInicioSesion" prefHeight="33.0" prefWidth="130.0" style="-fx-background-color: #8d46bb; -fx-border-color: #000000}; -fx-border-radius: 10; -fx-background-radius: 20;" text="Iniciar sesión" textFill="WHITE">
+      <Label fx:id="lbErrorUsername" layoutX="542.0" layoutY="211.0" prefHeight="21.0" prefWidth="217.0" textFill="#dd1010" />
+      <Label fx:id="lbErrorPassword" layoutX="550.0" layoutY="308.0" prefHeight="32.0" prefWidth="241.0" textFill="#dd1010" />
+      <Button layoutX="561.0" layoutY="458.0" mnemonicParsing="false" onAction="#btnInicioSesion" prefHeight="44.0" prefWidth="159.0" style="-fx-background-color: #8d46bb; -fx-border-radius: 10; -fx-background-radius: 10;" text="Iniciar sesión" textFill="WHITE">
          <font>
-            <Font name="Segoe UI Semibold" size="15.0" />
+            <Font name="Segoe UI Semibold" size="19.0" />
          </font>
       </Button>
-      <PasswordField fx:id="tfPassword" layoutX="545.0" layoutY="299.0" promptText="Contraseña" style="-fx-background-color: transparent; -fx-border-color: #5125ad; -fx-border-width: 0px 0px 2px;">
+      <PasswordField fx:id="tfPassword" layoutX="545.0" layoutY="333.0" promptText="Contraseña" style="-fx-background-color: transparent; -fx-border-color: #5125ad; -fx-border-width: 0px 0px 2px;">
          <font>
-            <Font name="Arial" size="15.0" />
+            <Font name="Yu Gothic UI Regular" size="20.0" />
          </font>
       </PasswordField>
       <Text fill="#f2f2f2" layoutX="110.0" layoutY="359.0" stroke="#011528" strokeType="OUTSIDE" strokeWidth="0.0" text="CuponSmart" wrappingWidth="235.0">
@@ -60,6 +60,16 @@
       <ImageView fitHeight="101.0" fitWidth="108.0" layoutX="156.0" layoutY="189.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../recursos/coupon.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="44.0" fitWidth="49.0" layoutX="499.0" layoutY="232.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../recursos/user%20(1).png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="40.0" fitWidth="44.0" layoutX="501.0" layoutY="338.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../recursos/lock.png" />
          </image>
       </ImageView>
     </children>

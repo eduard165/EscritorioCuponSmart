@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -11,6 +13,24 @@
    <children>
       <Pane prefHeight="459.0" prefWidth="513.0" style="-fx-background-color: #5125ad;">
          <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="459.0" layoutX="-5.0" strokeType="INSIDE" strokeWidth="10.0" width="520.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0" startX="0.48058252427184467" startY="0.17475728155339806">
+                     <stops>
+                        <Stop color="#d63ad6" />
+                        <Stop color="#372cb5" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </fill>
+               <stroke>
+                  <LinearGradient endX="1.0" endY="1.0" startX="0.48058252427184467" startY="0.17475728155339806">
+                     <stops>
+                        <Stop color="#d63ad6" />
+                        <Stop color="#372cb5" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </stroke>
+            </Rectangle>
             <Text fill="WHITE" layoutX="178.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registro de domicilio">
                <font>
                   <Font name="Segoe UI Black" size="15.0" />
