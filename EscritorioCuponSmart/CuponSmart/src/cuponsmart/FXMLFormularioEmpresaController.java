@@ -63,4 +63,10 @@ public class FXMLFormularioEmpresaController implements Initializable {
     private void btnSubirLogo(ActionEvent event) {
     }
     
+    
+    public void validarCamposLlenos(){
+        
+        
+    }
+    
 }
