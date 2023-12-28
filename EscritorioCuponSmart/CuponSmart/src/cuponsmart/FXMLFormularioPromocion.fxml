@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -9,7 +10,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="444.0" prefWidth="511.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cuponsmart.FXMLFormularioPromocionController">
    <children>
-      <Pane layoutY="-14.0" prefHeight="799.0" prefWidth="857.0" style="-fx-background-color: #5125ad;">
+      <Pane layoutY="-14.0" prefHeight="799.0" prefWidth="906.0" style="-fx-background-color: #5125ad;">
          <children>
             <Text fill="WHITE" layoutX="265.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Por favor, ingrese los datos de la promoción">
                <font>
@@ -43,7 +44,7 @@
                <font>
                   <Font name="System Bold" size="18.0" />
                </font></Button>
-            <GridPane layoutX="573.0" layoutY="371.0" prefHeight="120.0" prefWidth="211.0">
+            <GridPane layoutX="561.0" layoutY="377.0" prefHeight="120.0" prefWidth="211.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
@@ -85,6 +86,9 @@
                   <ComboBox fx:id="cbSucursalPromocion" prefHeight="31.0" prefWidth="204.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                </children>
             </GridPane>
+            <ImageView fx:id="ivFotoPromocion" fitHeight="150.0" fitWidth="153.0" layoutX="667.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true" />
+            <Button layoutX="694.0" layoutY="264.0" mnemonicParsing="false" onAction="#btnBuscarFotoPromocion" text="Buscar foto" />
+            <Button layoutX="694.0" layoutY="301.0" mnemonicParsing="false" onAction="#btnSubirFotoPromocion" prefHeight="31.0" prefWidth="95.0" text="Subir foto" />
          </children>
       </Pane>
    </children>

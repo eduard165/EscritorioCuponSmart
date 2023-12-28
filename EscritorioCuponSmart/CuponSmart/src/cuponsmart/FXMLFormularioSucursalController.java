@@ -5,15 +5,20 @@
  */
 package cuponsmart;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -45,10 +50,31 @@ public class FXMLFormularioSucursalController implements Initializable {
 
     @FXML
     private void btnGuardarPromocion(ActionEvent event) {
+        
+        irFormularioDomicilio();
+        
     }
 
     @FXML
     private void btnCancelar(ActionEvent event) {
     }
+
+    private void irFormularioDomicilio() {
+        try {
+             Stage stagePrincipal = (Stage)tfNombreSucursal.getScene().getWindow();
+            FXMLLoader loadVista = new FXMLLoader(getClass().getResource("FXMLFormularioDomicilio.fxml"));
+            Parent vista = loadVista.load();
+            
+            Scene scene = new Scene(vista);
+            stagePrincipal.setScene(scene);
+            stagePrincipal.show();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
     
-}
+    
+    
+    }
+    
+
