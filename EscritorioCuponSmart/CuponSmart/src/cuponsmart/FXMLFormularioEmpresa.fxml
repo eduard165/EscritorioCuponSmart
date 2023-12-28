@@ -65,11 +65,11 @@
       </GridPane>
       <Label layoutX="306.0" layoutY="126.0" text="Datos de empresa" textFill="WHITE" underline="true">
          <font>
-            <Font name="Tahoma" size="13.0" />
+            <Font name="Tahoma" size="15.0" />
          </font></Label>
-      <Button layoutX="438.0" layoutY="711.0" mnemonicParsing="false" onAction="#btnGuardarEmpresa" prefHeight="54.0" prefWidth="105.0" text="Guardar" />
-      <Button layoutX="176.0" layoutY="711.0" mnemonicParsing="false" onAction="#btnCancelar" prefHeight="54.0" prefWidth="113.0" text="Cancelar" />
-      <GridPane hgap="10.0" layoutX="185.0" layoutY="387.0" prefHeight="169.0" prefWidth="360.0" vgap="10.0">
+      <Button layoutX="194.0" layoutY="710.0" mnemonicParsing="false" onAction="#btnGuardarEmpresa" prefHeight="54.0" prefWidth="105.0" text="Siguiente" />
+      <Button layoutX="443.0" layoutY="710.0" mnemonicParsing="false" onAction="#btnCancelar" prefHeight="54.0" prefWidth="113.0" text="Cancelar" />
+      <GridPane hgap="10.0" layoutX="185.0" layoutY="387.0" prefHeight="216.0" prefWidth="360.0" vgap="10.0">
          <children>
             <TextField fx:id="tfTelefono" prefHeight="31.0" prefWidth="298.0" promptText="000000000" GridPane.rowIndex="1" />
             <TextField fx:id="tfEmail" prefHeight="30.0" prefWidth="308.0" promptText="empresa@google.com" GridPane.rowIndex="3" />
@@ -99,8 +99,8 @@
          <rowConstraints>
             <RowConstraints maxHeight="49.0" minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="84.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="87.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="87.0" minHeight="10.0" prefHeight="27.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="87.0" minHeight="0.0" prefHeight="13.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="87.0" minHeight="10.0" prefHeight="22.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="54.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="54.0" minHeight="10.0" prefHeight="28.0" vgrow="SOMETIMES" />
          </rowConstraints>

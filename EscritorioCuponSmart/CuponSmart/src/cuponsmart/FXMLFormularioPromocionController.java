@@ -14,6 +14,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 
 /**
  * FXML Controller class
@@ -38,6 +39,12 @@ public class FXMLFormularioPromocionController implements Initializable {
     private ComboBox<?> cbTipoPromocion;
     @FXML
     private TextField tfDescuento;
+    @FXML
+    private ComboBox<?> cbEmpresaAsociada;
+    @FXML
+    private ComboBox<?> cbSucursalPromocion;
+    @FXML
+    private ImageView ivFotoPromocion;
 
     /**
      * Initializes the controller class.
@@ -53,6 +60,14 @@ public class FXMLFormularioPromocionController implements Initializable {
 
     @FXML
     private void btnCancelar(ActionEvent event) {
+    }
+
+    @FXML
+    private void btnBuscarFotoPromocion(ActionEvent event) {
+    }
+
+    @FXML
+    private void btnSubirFotoPromocion(ActionEvent event) {
     }
     
 }
