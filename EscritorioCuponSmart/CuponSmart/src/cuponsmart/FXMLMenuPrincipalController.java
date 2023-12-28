@@ -55,7 +55,7 @@ public class FXMLMenuPrincipalController implements Initializable {
     }    
     public void inicializarMenu(Usuario usuarioSesion) {
         this.usuarioSesion = usuarioSesion;
-        lbUsuarioSesion.setText(usuarioSesion.getUsername());
+        lbUsuarioSesion.setText(usuarioSesion.getUsername().toString() + "\n" + usuarioSesion.getNombre().toString() + "\n" + usuarioSesion.getApellido_paterno().toString()+ "\n" + usuarioSesion.getApellido_materno());
     }
 
     @FXML
@@ -176,6 +176,8 @@ public class FXMLMenuPrincipalController implements Initializable {
     
     
     public void inicializarGraficosMenu(){
+        
+        
     Image icEmpresa = new Image("recursos/empresa.png");
     ImageView imgEmpresa = new ImageView(icEmpresa);
     
@@ -212,8 +214,5 @@ public class FXMLMenuPrincipalController implements Initializable {
         btnIrAdminCupones.setGraphic(imgCupon);
         
     }
-   
-    
-    
-    
+  
 }

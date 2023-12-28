@@ -39,8 +39,8 @@
             <Font name="Yu Gothic Regular" size="20.0" />
          </font>
       </TextField>
-      <Label fx:id="lbErrorUsername" layoutX="542.0" layoutY="211.0" prefHeight="21.0" prefWidth="217.0" textFill="#dd1010" />
-      <Label fx:id="lbErrorPassword" layoutX="550.0" layoutY="308.0" prefHeight="32.0" prefWidth="241.0" textFill="#dd1010" />
+      <Label fx:id="lbErrorUsername" layoutX="542.0" layoutY="280.0" prefHeight="21.0" prefWidth="217.0" text="Datos no validos" textFill="#dd1010" />
+      <Label fx:id="lbErrorPassword" layoutX="541.0" layoutY="387.0" prefHeight="32.0" prefWidth="241.0" text="Datos no validos" textFill="#dd1010" />
       <Button layoutX="561.0" layoutY="458.0" mnemonicParsing="false" onAction="#btnInicioSesion" prefHeight="44.0" prefWidth="159.0" style="-fx-background-color: #8d46bb; -fx-border-radius: 10; -fx-background-radius: 10;" text="Iniciar sesión" textFill="WHITE">
          <font>
             <Font name="Segoe UI Semibold" size="19.0" />

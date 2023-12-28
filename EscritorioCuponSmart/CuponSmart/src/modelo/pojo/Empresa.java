@@ -1,44 +1,41 @@
 
 package modelo.pojo;
 
-/**
- *
- * @author lizet
- */
 public class Empresa {
-    private String RFC;
+
+    private String rfc;
     private String nombre;
-    private String nombreComercial;
-    private String representanteLegal;
+    private String nombre_comercial;
+    private String representante_legal;
     private String email;
     private String telefono;
-    private String paginaWeb;
-    private String estatusID;
+    private String pagina_web;
+    private String id_estatus;
     private byte[] logo;
     private String logoBase64;
 
     public Empresa() {
     }
 
-    public Empresa(String RFC, String nombre, String nombreComercial, String representanteLegal, String email, String telefono, String paginaWeb, String estatusID, byte[] logo, String logoBase64) {
-        this.RFC = RFC;
+    public Empresa(String rfc, String nombre, String nombre_comercial, String representante_legal, String email, String telefono, String pagina_web, String id_estatus, byte[] logo, String logoBase64) {
+        this.rfc = rfc;
         this.nombre = nombre;
-        this.nombreComercial = nombreComercial;
-        this.representanteLegal = representanteLegal;
+        this.nombre_comercial = nombre_comercial;
+        this.representante_legal = representante_legal;
         this.email = email;
         this.telefono = telefono;
-        this.paginaWeb = paginaWeb;
-        this.estatusID = estatusID;
+        this.pagina_web = pagina_web;
+        this.id_estatus = id_estatus;
         this.logo = logo;
         this.logoBase64 = logoBase64;
     }
 
-    public String getRFC() {
-        return RFC;
+    public String getRfc() {
+        return rfc;
     }
 
-    public void setRFC(String RFC) {
-        this.RFC = RFC;
+    public void setRfc(String rfc) {
+        this.rfc = rfc;
     }
 
     public String getNombre() {
@@ -49,20 +46,20 @@ public class Empresa {
         this.nombre = nombre;
     }
 
-    public String getNombreComercial() {
-        return nombreComercial;
+    public String getNombre_comercial() {
+        return nombre_comercial;
     }
 
-    public void setNombreComercial(String nombreComercial) {
-        this.nombreComercial = nombreComercial;
+    public void setNombre_comercial(String nombre_comercial) {
+        this.nombre_comercial = nombre_comercial;
     }
 
-    public String getRepresentanteLegal() {
-        return representanteLegal;
+    public String getRepresentante_legal() {
+        return representante_legal;
     }
 
-    public void setRepresentanteLegal(String representanteLegal) {
-        this.representanteLegal = representanteLegal;
+    public void setRepresentante_legal(String representante_legal) {
+        this.representante_legal = representante_legal;
     }
 
     public String getEmail() {
@@ -81,20 +78,20 @@ public class Empresa {
         this.telefono = telefono;
     }
 
-    public String getPaginaWeb() {
-        return paginaWeb;
+    public String getPagina_web() {
+        return pagina_web;
     }
 
-    public void setPaginaWeb(String paginaWeb) {
-        this.paginaWeb = paginaWeb;
+    public void setPagina_web(String pagina_web) {
+        this.pagina_web = pagina_web;
     }
 
-    public String getEstatusID() {
-        return estatusID;
+    public String getId_estatus() {
+        return id_estatus;
     }
 
-    public void setEstatusID(String estatusID) {
-        this.estatusID = estatusID;
+    public void setId_estatus(String id_estatus) {
+        this.id_estatus = id_estatus;
     }
 
     public byte[] getLogo() {
@@ -113,4 +110,6 @@ public class Empresa {
         this.logoBase64 = logoBase64;
     }
 
+    
+    
 }

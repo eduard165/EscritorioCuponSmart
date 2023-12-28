@@ -44,18 +44,20 @@ public class FXMLInicioSesionController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        this.lbErrorUsername.setVisible(false);
+        this.lbErrorPassword.setVisible(false);
+
     }
+
     @FXML
     private void btnInicioSesion(ActionEvent event) {
         if (validarDatos()) {
             verificarSesion(usuario);
-        }else{
-            //agregar error en los labels de user y password 
-            
-        }
+        } 
     }
+
     private void verificarSesion(Usuario usuario) {
+
         RespuestaLoginEscritorio respuestaValidacionLogin = InicioSesionDAO.validarSesionUsuario(usuario);
         if (!respuestaValidacionLogin.getError()) {
             Utilidades.mostrarAlertaSimple("Credenciales correctas", respuestaValidacionLogin.getContenido(), Alert.AlertType.INFORMATION);
@@ -67,32 +69,34 @@ public class FXMLInicioSesionController implements Initializable {
     }
 
     private void irPantallaPrincipal() {
+
         try {
+
             Stage stagePrincipal = (Stage) tfUsuario.getScene().getWindow();
             FXMLLoader loadVista = new FXMLLoader(getClass().getResource("FXMLMenuPrincipal.fxml"));
             Parent vista = loadVista.load();
             FXMLMenuPrincipalController controladorMenu = loadVista.getController();
             controladorMenu.inicializarMenu(usuario);
-            
+
             Scene scene = new Scene(vista);
             stagePrincipal.setScene(scene);
             stagePrincipal.show();
+
         } catch (IOException ex) {
+
             ex.printStackTrace();
             Utilidades.mostrarAlertaSimple("ERROR", ex.getMessage(), Alert.AlertType.ERROR);
         }
     }
 
     private Boolean validarDatos() {
-        lbErrorUsername.setText("");
-        lbErrorPassword.setText("");
 
         if (tfUsuario.getText().isEmpty()) {
-            lbErrorUsername.setText("Nombre de usuario obligatorio.");
+            tfUsuario.setVisible(true);
             return false;
         }
         if (tfPassword.getText().isEmpty()) {
-            lbErrorPassword.setText("Contraseña es obligatoria.");
+            tfUsuario.setVisible(true);
             return false;
         }
         asignarDatos();
@@ -100,7 +104,9 @@ public class FXMLInicioSesionController implements Initializable {
     }
 
     private void asignarDatos() {
+
         this.usuario.setPassword(tfPassword.getText());
         this.usuario.setUsername(tfUsuario.getText());
+
     }
 }

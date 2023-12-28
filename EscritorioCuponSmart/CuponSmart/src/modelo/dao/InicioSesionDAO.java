@@ -21,7 +21,7 @@ public class InicioSesionDAO {
 
     public static RespuestaLoginEscritorio validarSesionUsuario(Usuario usuario) {
         RespuestaLoginEscritorio rest = new RespuestaLoginEscritorio();
-        String url = Constantes.URL_WS + "login/validacionUsuario";
+        String url = Constantes.URL_WS + "login/validacion/usuario";
         Gson gson = new Gson();
         String parametros = gson.toJson(usuario);
         CodigoHTTP respuesta = ConexionHTTP.peticionPOSTJson(url, parametros);

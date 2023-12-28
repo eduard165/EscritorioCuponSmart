@@ -1,39 +1,36 @@
 
 package modelo.pojo;
 
-/**
- *
- * @author lizet
- */
 public class Sucursal {
-    
-    private Integer idSucursal;
+
+    private Integer id_sucursal;
     private String nombre;
     private String telefono;
     private Double latitud;
     private Double longitud;
-    private String nombreEncargado;
-    private String empresaRFC;
+    private String nombre_encargado;
+    private String empresa_rfc;
+
 
     public Sucursal() {
     }
 
-    public Sucursal(Integer idSucursal, String nombre, String telefono, Double latitud, Double longitud, String nombreEncargado, String empresaRFC) {
-        this.idSucursal = idSucursal;
+    public Sucursal(Integer id_sucursal, String nombre, String telefono, Double latitud, Double longitud, String nombre_encargado, String empresa_rfc) {
+        this.id_sucursal = id_sucursal;
         this.nombre = nombre;
         this.telefono = telefono;
         this.latitud = latitud;
         this.longitud = longitud;
-        this.nombreEncargado = nombreEncargado;
-        this.empresaRFC = empresaRFC;
+        this.nombre_encargado = nombre_encargado;
+        this.empresa_rfc = empresa_rfc;
     }
 
-    public Integer getIdSucursal() {
-        return idSucursal;
+    public Integer getId_sucursal() {
+        return id_sucursal;
     }
 
-    public void setIdSucursal(Integer idSucursal) {
-        this.idSucursal = idSucursal;
+    public void setId_sucursal(Integer id_sucursal) {
+        this.id_sucursal = id_sucursal;
     }
 
     public String getNombre() {
@@ -68,24 +65,20 @@ public class Sucursal {
         this.longitud = longitud;
     }
 
-    public String getNombreEncargado() {
-        return nombreEncargado;
+    public String getNombre_encargado() {
+        return nombre_encargado;
     }
 
-    public void setNombreEncargado(String nombreEncargado) {
-        this.nombreEncargado = nombreEncargado;
+    public void setNombre_encargado(String nombre_encargado) {
+        this.nombre_encargado = nombre_encargado;
     }
 
-    public String getEmpresaRFC() {
-        return empresaRFC;
+    public String getEmpresa_rfc() {
+        return empresa_rfc;
     }
 
-    public void setEmpresaRFC(String empresaRFC) {
-        this.empresaRFC = empresaRFC;
+    public void setEmpresa_rfc(String empresa_rfc) {
+        this.empresa_rfc = empresa_rfc;
     }
-    
-    
-    
-
     
 }

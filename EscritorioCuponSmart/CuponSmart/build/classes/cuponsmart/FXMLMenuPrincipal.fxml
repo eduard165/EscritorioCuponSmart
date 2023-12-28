@@ -35,7 +35,7 @@
                   <Font name="Yu Gothic Bold" size="21.0" />
                </font>
             </Label>
-            <Label fx:id="lbUsuarioSesion" layoutX="59.0" layoutY="232.0" prefHeight="18.0" prefWidth="86.0" textFill="WHITE">
+            <Label fx:id="lbUsuarioSesion" layoutX="15.0" layoutY="232.0" prefHeight="156.0" prefWidth="176.0" textFill="WHITE">
                <font>
                   <Font name="Tahoma" size="14.0" />
                </font>
