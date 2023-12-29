@@ -53,7 +53,7 @@ public class FXMLInicioSesionController implements Initializable {
     private void btnInicioSesion(ActionEvent event) {
         if (validarDatos()) {
             verificarSesion(usuario);
-        } 
+        }
     }
 
     private void verificarSesion(Usuario usuario) {
@@ -62,6 +62,7 @@ public class FXMLInicioSesionController implements Initializable {
         if (!respuestaValidacionLogin.getError()) {
             Utilidades.mostrarAlertaSimple("Credenciales correctas", respuestaValidacionLogin.getContenido(), Alert.AlertType.INFORMATION);
             this.usuario = respuestaValidacionLogin.getUsuario();
+
             irPantallaPrincipal();
         } else {
             Utilidades.mostrarAlertaSimple("Error", respuestaValidacionLogin.getContenido(), Alert.AlertType.ERROR);
@@ -69,24 +70,51 @@ public class FXMLInicioSesionController implements Initializable {
     }
 
     private void irPantallaPrincipal() {
+        switch (usuario.getId_rol()) {
+            // General
+            case 1:
+                try {
 
-        try {
+                    Stage stagePrincipal = (Stage) tfUsuario.getScene().getWindow();
+                    FXMLLoader loadVista = new FXMLLoader(getClass().getResource("FXMLMenuPrincipal.fxml"));
+                    Parent vista = loadVista.load();
+                    FXMLMenuPrincipalController controladorMenu = loadVista.getController();
+                    controladorMenu.inicializarMenuGeneral(usuario);
 
-            Stage stagePrincipal = (Stage) tfUsuario.getScene().getWindow();
-            FXMLLoader loadVista = new FXMLLoader(getClass().getResource("FXMLMenuPrincipal.fxml"));
-            Parent vista = loadVista.load();
-            FXMLMenuPrincipalController controladorMenu = loadVista.getController();
-            controladorMenu.inicializarMenu(usuario);
+                    Scene scene = new Scene(vista);
+                    stagePrincipal.setScene(scene);
+                    stagePrincipal.show();
 
-            Scene scene = new Scene(vista);
-            stagePrincipal.setScene(scene);
-            stagePrincipal.show();
+                } catch (IOException ex) {
 
-        } catch (IOException ex) {
+                    ex.printStackTrace();
+                    Utilidades.mostrarAlertaSimple("ERROR", ex.getMessage(), Alert.AlertType.ERROR);
+                }
+                break;
+                
+            // Comercial
+            case 2:
+                try {
 
-            ex.printStackTrace();
-            Utilidades.mostrarAlertaSimple("ERROR", ex.getMessage(), Alert.AlertType.ERROR);
+                    Stage stagePrincipal = (Stage) tfUsuario.getScene().getWindow();
+                    FXMLLoader loadVista = new FXMLLoader(getClass().getResource("FXMLMenuComercial.fxml"));
+                    Parent vista = loadVista.load();
+                    FXMLMenuComercialController controladorMenuComercial = loadVista.getController();
+                    controladorMenuComercial.inicializarMenuComercial(usuario);
+
+                    Scene scene = new Scene(vista);
+                    stagePrincipal.setScene(scene);
+                    stagePrincipal.show();
+
+                } catch (IOException ex) {
+
+                    ex.printStackTrace();
+                    Utilidades.mostrarAlertaSimple("ERROR", ex.getMessage(), Alert.AlertType.ERROR);
+                }
+                break;
+
         }
+
     }
 
     private Boolean validarDatos() {
