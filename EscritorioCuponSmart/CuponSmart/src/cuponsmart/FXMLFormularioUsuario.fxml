@@ -123,8 +123,8 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ComboBox fx:id="cbRol" onAction="#cbTipoUsuario" prefHeight="25.0" prefWidth="142.0" GridPane.columnIndex="1" />
-            <ComboBox fx:id="cbEmpresa" onAction="#cbEmpresaAsociada" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <ComboBox fx:id="cbRol" prefHeight="25.0" prefWidth="142.0" GridPane.columnIndex="1" />
+            <ComboBox fx:id="cbEmpresa" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label text="Rol" textFill="WHITE">
                <font>
                   <Font name="Arial" size="13.0" />

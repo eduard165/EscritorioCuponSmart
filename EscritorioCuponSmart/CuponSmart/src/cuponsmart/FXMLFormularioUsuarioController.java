@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -36,6 +38,7 @@ public class FXMLFormularioUsuarioController implements Initializable {
     private Empresa cEmpresa = new Empresa();
     private Usuario usuario = new Usuario();
     private boolean band;
+    int selectedIndex;
     @FXML
     private TextField tfNombre;
     @FXML
@@ -51,21 +54,21 @@ public class FXMLFormularioUsuarioController implements Initializable {
     @FXML
     private ComboBox<Empresa> cbEmpresa;
 
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        cargarInformacionEmpresas();
+        configuracionSeleccionEstado();
         ObservableList<String> roles = FXCollections.observableArrayList("Usuario General", "Usuario Comercial");
         cbRol.setItems(roles);
+        cbEmpresa.setEditable(false);
+        cargarDatosComboBox();
+
     }
 
     public void inicializarInformacion(Usuario usuario, boolean band) {
         this.usuario = usuario;
         this.band = band;
         if (!band) {
+
             cargarUsuario();
         }
     }
@@ -78,15 +81,18 @@ public class FXMLFormularioUsuarioController implements Initializable {
 
     @FXML
     private void btnGuardarUsuario(ActionEvent event) {
+        if (camposEstanLlenos()) {
+            if (band) {
+                registrarUsuario();
 
-        if (band) {
-            registrarUsuario();
+            } else {
+                editarUsuario();
 
+            }
         } else {
-            editarUsuario();
+            Utilidades.mostrarAlertaSimple("Campos vacíos", "Por favor, llena todos los campos obligatorios.", Alert.AlertType.WARNING);
 
         }
-
     }
 
     public void editarUsuario() {
@@ -110,7 +116,7 @@ public class FXMLFormularioUsuarioController implements Initializable {
         descargarUsuario();
         if (usuario != null) {
 
-            Mensaje respuesta = UsuarioDAO.editarUsuario(usuario);
+            Mensaje respuesta = UsuarioDAO.registrarUsuario(usuario);
             if (!respuesta.getError()) {
                 actualizarTablaEnVentanaPrincipal();
                 Stage stage = (Stage) tfApellidoPat.getScene().getWindow();
@@ -135,11 +141,13 @@ public class FXMLFormularioUsuarioController implements Initializable {
         }
     }
 
-    private void cargarInformacionEmpresas() {
-        empresa = FXCollections.observableArrayList();
-        List<Empresa> inf = UsuarioDAO.obtenerEmpresas();
-        empresa.addAll(inf);
-        cbEmpresa.setItems(empresa);
+    private void cargarInformacionEmpresas(String rolSeleccionado) {
+        if (rolSeleccionado != null) {
+            empresa = FXCollections.observableArrayList();
+            List<Empresa> inf = UsuarioDAO.obtenerEmpresas();
+            empresa.addAll(inf);
+            cbEmpresa.setItems(empresa);
+        }
     }
 
     private void cargarUsuario() {
@@ -190,9 +198,9 @@ public class FXMLFormularioUsuarioController implements Initializable {
         usuario.setUsername(tfUser.getText());
         usuario.setPassword(tfPassword.getText());
 
-        if (usuario.getEmpresa_rfc() != null || usuario.getEmpresa_rfc().isEmpty()) {
-            Empresa empresa = cbEmpresa.getSelectionModel().getSelectedItem();
-            usuario.setEmpresa_rfc(empresa.getRfc());
+        if (usuario.getEmpresa_rfc() != null) {
+            cEmpresa = cbEmpresa.getSelectionModel().getSelectedItem();
+            usuario.setEmpresa_rfc(cEmpresa.getRfc());
         }
         if (usuario.getId_rol() != null) {
             Integer rolSeleccionado = cbRol.getSelectionModel().getSelectedIndex();
@@ -201,4 +209,50 @@ public class FXMLFormularioUsuarioController implements Initializable {
             }
         }
     }
+
+    private boolean camposEstanLlenos() {
+        boolean rst = tfNombre.getText().isEmpty()
+                && !tfApellidoPat.getText().isEmpty()
+                && !tfApellidoMat.getText().isEmpty()
+                && !tfPassword.getText().isEmpty()
+                && !tfUser.getText().isEmpty()
+                && cbRol.getSelectionModel().getSelectedItem() != null;
+
+        if (selectedIndex == 1) {
+            rst = cbEmpresa.getSelectionModel().getSelectedItem() != null;
+        }
+        return rst;
+    }
+
+    private void configuracionSeleccionEstado() {
+        cbRol.valueProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                selectedIndex = cbRol.getSelectionModel().getSelectedIndex();
+
+                if (selectedIndex == 0) {
+                    cbEmpresa.setDisable(false);
+
+                } else if (selectedIndex == 1) {
+                    cbEmpresa.setDisable(true);
+                    cargarInformacionEmpresas(newValue);
+
+                }
+            }
+        });
+        cbRol.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                selectedIndex = newValue.intValue();
+            }
+        });
+    }
+    
+    private void cargarDatosComboBox() {
+    ObservableList<String> roles = FXCollections.observableArrayList("Usuario General", "Usuario Comercial");
+    cbRol.setItems(roles);
+    cbEmpresa.setEditable(false);
+    cargarInformacionEmpresas(null); 
+}
+
 }

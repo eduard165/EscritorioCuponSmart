@@ -70,15 +70,12 @@ public class FXMLAdminUsuariosController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-
         usuariosDisponibles = FXCollections.observableArrayList();
         configurarColumnasTabla();
         inicializarGraficosAdmin();
     }
 
     public void inicializarInformacion(Usuario usuarioSesion) {
-
         this.usuarioSesion = usuarioSesion;
         consultarInformacion();
     }
@@ -107,7 +104,6 @@ public class FXMLAdminUsuariosController implements Initializable {
     private void btnEliminarUsuario(ActionEvent event) {
         nUsuario = tbUsuarios.getSelectionModel().getSelectedItem();
         if (nUsuario != null) {
-
             Mensaje respuesta = UsuarioDAO.editarUsuario(nUsuario);
             if (!respuesta.getError()) {
                 Utilidades.mostrarAlertaSimple("Registro correcto", "Se eliminó con éxito", Alert.AlertType.INFORMATION);
@@ -118,7 +114,7 @@ public class FXMLAdminUsuariosController implements Initializable {
         } else {
             Utilidades.mostrarAlertaSimple("Selección de usuario", "Para eliminar, debes seleccionar un paciente de la tabla", Alert.AlertType.WARNING);
         }
-        
+
     }
 
     public void inicializarGraficosAdmin() {

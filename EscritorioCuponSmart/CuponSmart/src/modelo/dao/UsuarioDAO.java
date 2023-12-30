@@ -77,8 +77,7 @@ public class UsuarioDAO {
         CodigoHTTP respuesta = ConexionHTTP.peticionGET(url);
         if (respuesta.getCodigoRespuesta() == HttpURLConnection.HTTP_OK) {
             Gson json = new Gson();
-            Type tipoListaEmpresa = new TypeToken<List<Empresa>>() {
-            }.getType();
+            Type tipoListaEmpresa = new TypeToken<List<Empresa>>() {}.getType();
             empresas = json.fromJson(respuesta.getContenido(), tipoListaEmpresa);
            
         }
