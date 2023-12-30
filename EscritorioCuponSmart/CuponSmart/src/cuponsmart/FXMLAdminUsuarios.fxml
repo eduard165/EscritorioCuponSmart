@@ -17,14 +17,14 @@
             <Font name="Yu Gothic Bold" size="48.0" />
          </font>
       </Label>
-      <TableView fx:id="tvUsuarios" layoutX="254.0" layoutY="275.0" prefHeight="408.0" prefWidth="798.0" style="-fx-background-color: 9C27B0;">
+      <TableView fx:id="tbUsuarios" layoutX="193.0" layoutY="275.0" prefHeight="408.0" prefWidth="884.0" style="-fx-background-color: 9C27B0;">
         <columns>
-          <TableColumn fx:id="tcNombre" prefWidth="141.0" text="Nombre" />
-          <TableColumn id="tcApellidoPat" fx:id="tcApellidoPat" prefWidth="147.0" text="Apellido Paterno" />
-            <TableColumn fx:id="tcApellidoMat" prefWidth="145.0" text="Apellido Materno" />
-            <TableColumn fx:id="tcRepLegal" minWidth="0.0" prefWidth="3.0" />
-            <TableColumn prefWidth="127.0" text="Usuario" />
-            <TableColumn fx:id="tcTelefono" prefWidth="143.0" text="Telefono" />
+          <TableColumn fx:id="colNombre" prefWidth="141.0" text="Nombre" />
+          <TableColumn id="tcApellidoPat" fx:id="colApellidoPat" prefWidth="147.0" text="Apellido Paterno" />
+            <TableColumn fx:id="colApellidoMat" prefWidth="145.0" text="Apellido Materno" />
+            <TableColumn fx:id="colUser" prefWidth="120.0" text="Usuario" />
+            <TableColumn fx:id="colCorreoElectronico" prefWidth="143.0" text="Correo Electronico" />
+            <TableColumn fx:id="colRol" minWidth="0.0" prefWidth="187.0" text="Rol" />
         </columns>
       </TableView>
       <TextField fx:id="tfBusqueda" layoutX="496.0" layoutY="157.0" prefHeight="31.0" prefWidth="283.0" style="-fx-background-radius: 30; -fx-border-color: #a836a1; -fx-border-radius: 30;">
@@ -32,9 +32,9 @@
             <Font name="Yu Gothic Regular" size="18.0" />
          </font></TextField>
       
-       <Pane layoutX="-2.0" prefHeight="747.0" prefWidth="200.0" style="-fx-background-color: #5125ad;">
+       <Pane layoutX="-2.0" prefHeight="747.0" prefWidth="188.0" style="-fx-background-color: #5125ad;">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" height="761.0" layoutX="-3.0" layoutY="-4.0" strokeType="INSIDE" strokeWidth="10.0" width="229.0">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="761.0" layoutX="-3.0" layoutY="-4.0" strokeType="INSIDE" strokeWidth="10.0" width="193.0">
                <fill>
                   <LinearGradient endX="1.0" endY="1.0" startX="0.616504854368932" startY="0.29126213592233">
                      <stops>

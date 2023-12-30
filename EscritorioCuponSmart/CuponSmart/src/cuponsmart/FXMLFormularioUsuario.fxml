@@ -85,7 +85,7 @@
          </font></Button>
       <GridPane hgap="10.0" layoutX="185.0" layoutY="387.0" prefHeight="149.0" prefWidth="358.0" vgap="10.0">
          <children>
-            <TextField fx:id="tfUsuario" prefHeight="31.0" prefWidth="298.0" promptText="000000000" GridPane.rowIndex="1" />
+            <TextField fx:id="tfUser" prefHeight="31.0" prefWidth="298.0" promptText="000000000" GridPane.rowIndex="1" />
             <TextField fx:id="tfPassword" prefHeight="30.0" prefWidth="308.0" promptText="empresa@google.com" GridPane.rowIndex="3" />
             <Label text="Nombre de usuario" textFill="WHITE">
                <font>
@@ -123,9 +123,9 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ComboBox onAction="#cbTipoUsuario" prefHeight="25.0" prefWidth="142.0" GridPane.columnIndex="1" />
-            <ComboBox onAction="#cbEmpresaAsociada" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Label text="Tipo de usuario" textFill="WHITE">
+            <ComboBox fx:id="cbRol" prefHeight="25.0" prefWidth="142.0" GridPane.columnIndex="1" />
+            <ComboBox fx:id="cbEmpresa" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label text="Rol" textFill="WHITE">
                <font>
                   <Font name="Arial" size="13.0" />
                </font>

@@ -1,5 +1,8 @@
 package modelo.pojo;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 public class Usuario {
 
     private Integer id_usuario;
@@ -12,12 +15,12 @@ public class Usuario {
     private String password;
     private Integer id_rol;
     private String empresa_rfc; 
-          
+    private String nombre_rol;
 
     public Usuario() {
     }
 
-    public Usuario(Integer id_usuario, String nombre, String apellido_paterno, String apellido_materno, String curp, String correo_electronico, String username, String password, Integer id_rol, String empresa_rfc) {
+    public Usuario(Integer id_usuario, String nombre, String apellido_paterno, String apellido_materno, String curp, String correo_electronico, String username, String password, Integer id_rol, String empresa_rfc, String nombre_rol) {
         this.id_usuario = id_usuario;
         this.nombre = nombre;
         this.apellido_paterno = apellido_paterno;
@@ -28,7 +31,10 @@ public class Usuario {
         this.password = password;
         this.id_rol = id_rol;
         this.empresa_rfc = empresa_rfc;
+        this.nombre_rol = nombre_rol;
     }
+
+ 
 
     public Integer getId_usuario() {
         return id_usuario;
@@ -110,9 +116,37 @@ public class Usuario {
         this.empresa_rfc = empresa_rfc;
     }
 
+    public String getNombre_rol() {
+        return nombre_rol;
+    }
+
+    public void setNombre_rol(String nombre_rol) {
+        this.nombre_rol = nombre_rol;
+    }
+          
+
+    
+    
     @Override
     public String toString() {
         return "Usuario{" + "id_usuario=" + id_usuario + ", nombre=" + nombre + ", apellido_paterno=" + apellido_paterno + ", apellido_materno=" + apellido_materno + ", curp=" + curp + ", correo_electronico=" + correo_electronico + ", username=" + username + ", password=" + password + ", id_rol=" + id_rol + ", empresa_rfc=" + empresa_rfc + '}';
+    }
+  
+    
+    public StringProperty nombreRolProperty() {
+        String nombreRol = "";
+        switch (this.id_rol) {
+            case 1:
+                nombreRol = "Administrador general";
+                break;
+            case 2:
+                nombreRol = "Administrador comercial";
+                break;
+            default:
+                nombreRol = "Rol Desconocido";
+                break;
+        }
+        return new SimpleStringProperty(nombreRol);
     }
     
 }

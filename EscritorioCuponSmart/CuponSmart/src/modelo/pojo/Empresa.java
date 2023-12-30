@@ -110,6 +110,11 @@ public class Empresa {
         this.logoBase64 = logoBase64;
     }
 
+    @Override
+    public String toString() {
+        return  nombre;
+    }
+
     
     
 }
