@@ -10,15 +10,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
-/**
- * FXML Controller class
- *
- * @author lizet
- */
 public class FXMLFormularioEmpresaController implements Initializable {
 
     @FXML
@@ -30,12 +27,6 @@ public class FXMLFormularioEmpresaController implements Initializable {
     @FXML
     private TextField tfNombreComercial;
     @FXML
-    private TextField tfColonia;
-    @FXML
-    private TextField tfCalle;
-    @FXML
-    private TextField tfCodigoPostal;
-    @FXML
     private TextField tfTelefono;
     @FXML
     private TextField tfEmail;
@@ -43,13 +34,16 @@ public class FXMLFormularioEmpresaController implements Initializable {
     private TextField tfPaginaWeb;
     @FXML
     private ImageView ivLogoEmpresa;
+    @FXML
+    private RadioButton rbActivo;
+    @FXML
+    private ToggleGroup groupEstatus;
+    @FXML
+    private RadioButton rbInactivo;
 
-    /**
-     * Initializes the controller class.
-     */
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
     }    
 
     @FXML

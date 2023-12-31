@@ -48,6 +48,8 @@ public class FXMLFormularioUsuarioController implements Initializable {
     private ComboBox<String> cbRol;
     @FXML
     private ComboBox<Empresa> cbEmpresa;
+    @FXML
+    private TextField tfCurp;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -94,7 +96,6 @@ public class FXMLFormularioUsuarioController implements Initializable {
                 actualizarTablaEnVentanaPrincipal();
                 Stage stage = (Stage) tfApellidoMat.getScene().getWindow();
                 stage.close();
-                cambiarFormularioDireecion();
             } else {
                 Utilidades.mostrarAlertaSimple("Error", respuesta.getMensaje(), Alert.AlertType.ERROR);
             }
@@ -112,7 +113,6 @@ public class FXMLFormularioUsuarioController implements Initializable {
                 actualizarTablaEnVentanaPrincipal();
                 Stage stage = (Stage) tfApellidoPat.getScene().getWindow();
                 stage.close();
-                cambiarFormularioDireecion();
             } else {
                 Utilidades.mostrarAlertaSimple("Error", respuesta.getMensaje(), Alert.AlertType.ERROR);
             }
@@ -171,22 +171,6 @@ public class FXMLFormularioUsuarioController implements Initializable {
         return -1;
     }
 
-    private void cambiarFormularioDireecion() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("SiguienteVentana.fxml"));
-            Parent root = loader.load();
-
-            FXMLFormularioDomicilioController controller = loader.getController();
-            // controller.inicializarDatos();
-
-            Stage nuevaVentana = new Stage();
-            nuevaVentana.setScene(new Scene(root));
-            nuevaVentana.setTitle("Registro de domicilio");
-            nuevaVentana.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     private void descargarUsuario() {
         usuario.setNombre(tfNombre.getText());
