@@ -1,8 +1,11 @@
-
 package modelo.dao;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
+import java.util.ArrayList;
+import java.util.List;
 import modelo.ConexionHTTP;
 import modelo.pojo.CodigoHTTP;
 import modelo.pojo.Empresa;
@@ -15,38 +18,32 @@ import utils.Constantes;
  * @author lizet
  */
 public class EmpresaDAO {
-    
-     public static MensajeUsuarios cargarEmpresasAsociadas(String parametro) {
-        MensajeUsuarios respuesta = new MensajeUsuarios();
-        String url = Constantes.URL_WS + "empresas/buscarEmpresas/" + parametro;
+
+    public static Empresa cargarEmpresasAsociadas(String parametro) {
+        Empresa respuesta = null;
+        String url = Constantes.URL_WS + "empresas/buscar/" + parametro;
         CodigoHTTP codigoRespuesta = ConexionHTTP.peticionGET(url);
         if (codigoRespuesta.getCodigoRespuesta() == HttpURLConnection.HTTP_OK) {
-
             Gson gson = new Gson();
-            respuesta = gson.fromJson(codigoRespuesta.getContenido(), MensajeUsuarios.class);
-        } else {
-            respuesta.setError(true);
-            respuesta.setMensaje("Hubo un error al obtener la informacion de las empresas, " + "intentelo nuevamente mas tarde");
+            respuesta = gson.fromJson(codigoRespuesta.getContenido(), Empresa.class);
         }
         return respuesta;
-
     }
-        public static MensajeUsuarios cargarEmpresas(String parametro) {
-        MensajeUsuarios respuesta = new MensajeUsuarios();
-        String url = Constantes.URL_WS + "empresas/buscarEmpresas/a" ;
+
+    public static List<Empresa> cargarEmpresas() {
+        List<Empresa> respuesta = new ArrayList<>();
+        String url = Constantes.URL_WS + "empresas/cargarEmpresas";
         CodigoHTTP codigoRespuesta = ConexionHTTP.peticionGET(url);
+
         if (codigoRespuesta.getCodigoRespuesta() == HttpURLConnection.HTTP_OK) {
-
             Gson gson = new Gson();
-            respuesta = gson.fromJson(codigoRespuesta.getContenido(), MensajeUsuarios.class);
-        } else {
-            respuesta.setError(true);
-            respuesta.setMensaje("Hubo un error al obtener la informacion de las empresas, " + "intentelo nuevamente mas tarde");
-        }
+            Type listaEmpresas = new TypeToken<List<Empresa>>() {
+            }.getType();
+            respuesta = gson.fromJson(codigoRespuesta.getContenido(), listaEmpresas);
+        } 
         return respuesta;
-
     }
-    
+
     public static Mensaje registrarEmpresa(Empresa empresa) {
         Mensaje msj = new Mensaje();
         String url = Constantes.URL_WS + "empresas/agregar";
@@ -57,7 +54,7 @@ public class EmpresaDAO {
             msj = gson.fromJson(respuesta.getContenido(), Mensaje.class);
         } else {
             msj.setError(true);
-            msj.setMensaje("Error en la peticion para agregar el usuario");
+            msj.setMensaje("Error en la peticion para agregar la empresa");
         }
         return msj;
     }
@@ -72,7 +69,7 @@ public class EmpresaDAO {
             msj = gson.fromJson(respuesta.getContenido(), Mensaje.class);
         } else {
             msj.setError(true);
-            msj.setMensaje("Error en la peticion para editar el usuario");
+            msj.setMensaje("Error en la peticion para editar la empresa");
         }
         return msj;
     }
