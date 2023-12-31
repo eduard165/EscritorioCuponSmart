@@ -30,11 +30,6 @@ import modelo.pojo.MensajeUsuarios;
 import modelo.pojo.Usuario;
 import utils.Utilidades;
 
-/**
- * FXML Controller class
- *
- * @author lizet
- */
 public class FXMLAdminUsuariosController implements Initializable {
 
     private ObservableList<Usuario> usuariosDisponibles;
@@ -79,7 +74,7 @@ public class FXMLAdminUsuariosController implements Initializable {
         this.usuarioSesion = usuarioSesion;
         consultarInformacion();
     }
-
+// falta
     @FXML
     private void btnMenuPrincipal(ActionEvent event) {
     }
@@ -99,7 +94,6 @@ public class FXMLAdminUsuariosController implements Initializable {
 
         }
     }
-
     @FXML
     private void btnEliminarUsuario(ActionEvent event) {
         nUsuario = tbUsuarios.getSelectionModel().getSelectedItem();
@@ -157,7 +151,7 @@ public class FXMLAdminUsuariosController implements Initializable {
     }
 
     private void consultarInformacion() {
-        MensajeUsuarios respuesta = UsuarioDAO.cargarUsuarios();
+        MensajeUsuarios respuesta = UsuarioDAO.cargarUsuarios(usuarioSesion.getId_usuario());
         if (!respuesta.isError() && respuesta.getMensaje() != null) {
             usuariosDisponibles.addAll(respuesta.getUsuarios());
             tbUsuarios.setItems(usuariosDisponibles);

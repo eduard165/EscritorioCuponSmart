@@ -26,9 +26,9 @@ import utils.Constantes;
 public class UsuarioDAO {
 
    
-     public static MensajeUsuarios cargarUsuarios() {
+     public static MensajeUsuarios cargarUsuarios(Integer id_usuario) {
         MensajeUsuarios respuesta = new MensajeUsuarios();
-        String url = Constantes.URL_WS + "usuarios/cargarUsuarios";
+        String url = Constantes.URL_WS + "usuarios/cargarUsuarios/" + id_usuario;
         CodigoHTTP codigoRespuesta = ConexionHTTP.peticionGET(url);
         if (codigoRespuesta.getCodigoRespuesta() == HttpURLConnection.HTTP_OK) {
 
@@ -71,6 +71,7 @@ public class UsuarioDAO {
         }
         return msj;
     }
+    
      public static  List<Empresa> obtenerEmpresas() {
         List<Empresa> empresas = new ArrayList<>();
         String url = Constantes.URL_WS + "empresas/buscarEmpresas/a";
