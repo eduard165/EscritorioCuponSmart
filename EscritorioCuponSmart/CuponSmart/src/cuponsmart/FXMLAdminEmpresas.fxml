@@ -44,11 +44,6 @@
             <Font name="Verdana Bold" size="10.0" />
          </font>
       </Button>
-      <Button fx:id="btnFormularioDom" layoutX="1109.0" layoutY="535.0" mnemonicParsing="false" onAction="#btnIrFormularioDomicilio" prefHeight="58.0" prefWidth="117.0" style="-fx-background-color: #0000; -fx-border-radius: 20; -fx-background-radius: 20;" textFill="WHITE">
-         <font>
-            <Font name="Verdana Bold" size="10.0" />
-         </font>
-      </Button>
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="772.0" layoutX="-2.0" layoutY="-8.0" strokeType="INSIDE" strokeWidth="10.0" width="238.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0" startX="0.616504854368932" startY="0.29126213592233">
