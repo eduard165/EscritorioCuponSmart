@@ -25,11 +25,6 @@ import modelo.pojo.MensajeUsuarios;
 import modelo.pojo.Usuario;
 import utils.Utilidades;
 
-/**
- * FXML Controller class
- *
- * @author lizet
- */
 public class FXMLFormularioUsuarioController implements Initializable {
 
     private ObservableList<String> id_rol;
@@ -56,10 +51,7 @@ public class FXMLFormularioUsuarioController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        configuracionSeleccionEstado();
-        ObservableList<String> roles = FXCollections.observableArrayList("Usuario General", "Usuario Comercial");
-        cbRol.setItems(roles);
-        cbEmpresa.setEditable(false);
+        configuracionSeleccionRol();
         cargarDatosComboBox();
 
     }
@@ -68,7 +60,6 @@ public class FXMLFormularioUsuarioController implements Initializable {
         this.usuario = usuario;
         this.band = band;
         if (!band) {
-
             cargarUsuario();
         }
     }
@@ -151,14 +142,22 @@ public class FXMLFormularioUsuarioController implements Initializable {
     }
 
     private void cargarUsuario() {
-        // FALTAN CAMPOS 
         tfNombre.setText(usuario.getNombre());
         tfApellidoPat.setText(usuario.getApellido_paterno());
         tfApellidoMat.setText(usuario.getApellido_materno());
         tfPassword.setText(usuario.getPassword());
         tfUser.setText(usuario.getUsername());
-        cbEmpresa.getSelectionModel().select(buscarIndicePorRFC(usuario.getEmpresa_rfc()));
-        cbRol.getSelectionModel().select(usuario.getId_rol());
+
+        int idRol = usuario.getId_rol();
+        if (idRol > 0 && idRol <= cbRol.getItems().size()) {
+            cbRol.getSelectionModel().select(idRol - 1); 
+        }
+
+        String rfcUsuario = usuario.getEmpresa_rfc();
+        int indiceEmpresa = buscarIndicePorRFC(rfcUsuario);
+        if (indiceEmpresa != -1) {
+            cbEmpresa.getSelectionModel().select(indiceEmpresa);
+        }
     }
 
     private int buscarIndicePorRFC(String rfc) {
@@ -190,8 +189,6 @@ public class FXMLFormularioUsuarioController implements Initializable {
     }
 
     private void descargarUsuario() {
-        // FALTAN CAMPOS 
-
         usuario.setNombre(tfNombre.getText());
         usuario.setApellido_paterno(tfApellidoPat.getText());
         usuario.setApellido_materno(tfApellidoMat.getText());
@@ -199,60 +196,54 @@ public class FXMLFormularioUsuarioController implements Initializable {
         usuario.setPassword(tfPassword.getText());
 
         if (usuario.getEmpresa_rfc() != null) {
-            cEmpresa = cbEmpresa.getSelectionModel().getSelectedItem();
-            usuario.setEmpresa_rfc(cEmpresa.getRfc());
-        }
-        if (usuario.getId_rol() != null) {
-            Integer rolSeleccionado = cbRol.getSelectionModel().getSelectedIndex();
-            if (rolSeleccionado >= 0) {
-                usuario.setId_rol(rolSeleccionado);
+            Empresa empresaSeleccionada = cbEmpresa.getSelectionModel().getSelectedItem();
+            if (empresaSeleccionada != null) {
+                usuario.setEmpresa_rfc(empresaSeleccionada.getRfc());
             }
+        }
+
+        Integer rolSeleccionado = cbRol.getSelectionModel().getSelectedIndex();
+        if (rolSeleccionado != null && rolSeleccionado >= 0) {
+            usuario.setId_rol(rolSeleccionado + 1);
         }
     }
 
     private boolean camposEstanLlenos() {
-        boolean rst = tfNombre.getText().isEmpty()
+        boolean todosLlenos = !tfNombre.getText().isEmpty()
                 && !tfApellidoPat.getText().isEmpty()
                 && !tfApellidoMat.getText().isEmpty()
                 && !tfPassword.getText().isEmpty()
                 && !tfUser.getText().isEmpty()
                 && cbRol.getSelectionModel().getSelectedItem() != null;
 
-        if (selectedIndex == 1) {
-            rst = cbEmpresa.getSelectionModel().getSelectedItem() != null;
+        if (todosLlenos && cbRol.getSelectionModel().getSelectedIndex() == 1) {
+            return cbEmpresa.getSelectionModel().getSelectedItem() != null;
         }
-        return rst;
+
+        return todosLlenos;
     }
 
-    private void configuracionSeleccionEstado() {
-        cbRol.valueProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                selectedIndex = cbRol.getSelectionModel().getSelectedIndex();
+private void configuracionSeleccionRol() {
+    cbRol.valueProperty().addListener(new ChangeListener<String>() {
+        @Override
+        public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+            selectedIndex = cbRol.getSelectionModel().getSelectedIndex();
 
-                if (selectedIndex == 0) {
-                    cbEmpresa.setDisable(false);
-
-                } else if (selectedIndex == 1) {
-                    cbEmpresa.setDisable(true);
-                    cargarInformacionEmpresas(newValue);
-
-                }
+            if (selectedIndex == 1) {
+                cbEmpresa.setDisable(false);
+                cargarInformacionEmpresas(newValue); 
+            } else if (selectedIndex == 0) {
+                cbEmpresa.setDisable(true);
             }
-        });
-        cbRol.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                selectedIndex = newValue.intValue();
-            }
-        });
-    }
-    
-    private void cargarDatosComboBox() {
-    ObservableList<String> roles = FXCollections.observableArrayList("Usuario General", "Usuario Comercial");
-    cbRol.setItems(roles);
-    cbEmpresa.setEditable(false);
-    cargarInformacionEmpresas(null); 
+        }
+    });
 }
+
+
+    private void cargarDatosComboBox() {
+        ObservableList<String> roles = FXCollections.observableArrayList("Usuario General", "Usuario Comercial");
+        cbRol.setItems(roles);
+        cbEmpresa.setEditable(false);
+    }
 
 }

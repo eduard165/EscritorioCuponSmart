@@ -23,11 +23,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import modelo.pojo.Empresa;
 
-/**
- * FXML Controller class
- *
- * @author lizet
- */
 public class FXMLAdminEmpresasController implements Initializable {
 
     private ObservableList<Empresa> Empresas;
