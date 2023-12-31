@@ -68,11 +68,6 @@
             <Font name="Verdana Bold" size="10.0" />
          </font>
       </Button>
-      <Button fx:id="btnFormularioDom" layoutX="1069.0" layoutY="505.0" mnemonicParsing="false" onAction="#btnIrFormularioDomicilio" prefHeight="47.0" prefWidth="117.0" style="-fx-background-color: #0000;" textFill="WHITE">
-         <font>
-            <Font name="Verdana Bold" size="10.0" />
-         </font>
-      </Button>
       <ImageView fitHeight="38.0" fitWidth="45.0" layoutX="808.0" layoutY="152.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../recursos/buscar.png" />

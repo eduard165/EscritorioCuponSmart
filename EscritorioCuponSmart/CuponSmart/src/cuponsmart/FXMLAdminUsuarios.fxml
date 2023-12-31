@@ -23,8 +23,8 @@
           <TableColumn id="tcApellidoPat" fx:id="colApellidoPat" prefWidth="147.0" text="Apellido Paterno" />
             <TableColumn fx:id="colApellidoMat" prefWidth="145.0" text="Apellido Materno" />
             <TableColumn fx:id="colUser" prefWidth="120.0" text="Usuario" />
-            <TableColumn fx:id="colCorreoElectronico" prefWidth="143.0" text="Correo Electronico" />
-            <TableColumn fx:id="colRol" minWidth="0.0" prefWidth="187.0" text="Rol" />
+            <TableColumn fx:id="colCorreoElectronico" prefWidth="176.0" text="Correo Electronico" />
+            <TableColumn fx:id="colRol" minWidth="0.0" prefWidth="154.0" text="Rol" />
         </columns>
       </TableView>
       <TextField fx:id="tfBusqueda" layoutX="496.0" layoutY="157.0" prefHeight="31.0" prefWidth="283.0" style="-fx-background-radius: 30; -fx-border-color: #a836a1; -fx-border-radius: 30;">
