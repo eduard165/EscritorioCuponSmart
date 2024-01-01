@@ -1,6 +1,9 @@
 
 package modelo.pojo;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 public class Empresa {
 
     private String rfc;
@@ -10,14 +13,14 @@ public class Empresa {
     private String email;
     private String telefono;
     private String pagina_web;
-    private String id_estatus;
+    private Integer id_estatus;
     private byte[] logo;
     private String logoBase64;
 
     public Empresa() {
     }
 
-    public Empresa(String rfc, String nombre, String nombre_comercial, String representante_legal, String email, String telefono, String pagina_web, String id_estatus, byte[] logo, String logoBase64) {
+    public Empresa(String rfc, String nombre, String nombre_comercial, String representante_legal, String email, String telefono, String pagina_web, Integer id_estatus, byte[] logo, String logoBase64) {
         this.rfc = rfc;
         this.nombre = nombre;
         this.nombre_comercial = nombre_comercial;
@@ -29,6 +32,8 @@ public class Empresa {
         this.logo = logo;
         this.logoBase64 = logoBase64;
     }
+
+   
 
     public String getRfc() {
         return rfc;
@@ -86,13 +91,15 @@ public class Empresa {
         this.pagina_web = pagina_web;
     }
 
-    public String getId_estatus() {
+    public Integer getId_estatus() {
         return id_estatus;
     }
 
-    public void setId_estatus(String id_estatus) {
+    public void setId_estatus(Integer id_estatus) {
         this.id_estatus = id_estatus;
     }
+
+    
 
     public byte[] getLogo() {
         return logo;
@@ -115,6 +122,20 @@ public class Empresa {
         return  nombre;
     }
 
-    
+     public StringProperty nombreStatusProperty() {
+        String nombreRol = "";
+        switch (this.id_estatus) {
+            case 1:
+                nombreRol = "Activo";
+                break;
+            case 2:
+                nombreRol = "Inactivo";
+                break;
+            default:
+                nombreRol = "status Desconocido";
+                break;
+        }
+        return new SimpleStringProperty(nombreRol);
+    }
     
 }

@@ -24,7 +24,9 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import modelo.dao.EmpresaDAO;
+import modelo.dao.UsuarioDAO;
 import modelo.pojo.Empresa;
+import modelo.pojo.Mensaje;
 import modelo.pojo.Usuario;
 import utils.Utilidades;
 
@@ -32,10 +34,11 @@ public class FXMLAdminEmpresasController implements Initializable {
 
     private ObservableList<Empresa> Empresas;
     private Usuario usuarioSesion = new Usuario();
+    private Empresa empresa = new Empresa();
 
     @FXML
     private Label lbUsuarioSesion;
-  
+
     @FXML
     private TextField tfBusquedaEmpresa;
     @FXML
@@ -60,11 +63,11 @@ public class FXMLAdminEmpresasController implements Initializable {
     private TableColumn<Empresa, String> tcEmail;
     @FXML
     private TableColumn<Empresa, String> tcRepLegal;
-
+    @FXML
+    private TableColumn<Empresa, String> tcStatus;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-    
         Empresas = FXCollections.observableArrayList();
         inicializarGraficosAdmin();
         configurarColumnasTabla();
@@ -77,11 +80,30 @@ public class FXMLAdminEmpresasController implements Initializable {
 
     @FXML
     private void btnEdicionEmpresa(ActionEvent event) {
-        abrirFormulario(false);
+        empresa = tvEmpresas.getSelectionModel().getSelectedItem();
+        if (empresa != null) {
+            abrirFormulario(false);
+
+        } else {
+            Utilidades.mostrarAlertaSimple("ERROR", "NO SE HA SELECCIONADO UNA EMPRESA EN LA TABLA", Alert.AlertType.ERROR);
+
+        }
     }
 
     @FXML
     private void btnEliminarEmpresa(ActionEvent event) {
+        empresa = tvEmpresas.getSelectionModel().getSelectedItem();
+        if (empresa != null) {
+            Mensaje respuesta = EmpresaDAO.eliminarEmpresa(empresa.getRfc());
+            if (!respuesta.getError()) {
+                Utilidades.mostrarAlertaSimple("Eliminacion correcta", "Se eliminó con éxito", Alert.AlertType.INFORMATION);
+                actualizarTabla();
+            } else {
+                Utilidades.mostrarAlertaSimple("Error", respuesta.getMensaje(), Alert.AlertType.ERROR);
+            }
+        } else {
+            Utilidades.mostrarAlertaSimple("Seleccion Empresa", "Para eliminar, debes seleccionar una empresa de la tabla", Alert.AlertType.WARNING);
+        }
     }
 
     private void btnIrFormularioDomicilio(ActionEvent event) {
@@ -115,28 +137,28 @@ public class FXMLAdminEmpresasController implements Initializable {
         tcRepLegal.setCellValueFactory(new PropertyValueFactory<>("representante_legal"));
         tcEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
         tcTelefono.setCellValueFactory(new PropertyValueFactory<>("telefono"));
+        tcStatus.setCellValueFactory(cellData -> cellData.getValue().nombreStatusProperty());
     }
 
     private void consultarInformacion() {
         if (usuarioSesion.getId_rol() == 1) {
             List<Empresa> respuesta = EmpresaDAO.cargarEmpresas();
-            if(respuesta != null){
+            if (respuesta != null) {
                 Empresas.addAll(respuesta);
                 tvEmpresas.setItems(Empresas);
-            }else{
+            } else {
                 Utilidades.mostrarAlertaSimple("ERROR", "Hubo un error en carga la tabla", Alert.AlertType.WARNING);
             }
         } else {
             Empresa respuesta = EmpresaDAO.cargarEmpresasAsociadas(usuarioSesion.getEmpresa_rfc());
-            if(respuesta != null){
+            if (respuesta != null) {
                 Empresas.addAll(respuesta);
                 tvEmpresas.setItems(Empresas);
-            }else{
+            } else {
                 Utilidades.mostrarAlertaSimple("ERROR", "Hubo un error en carga la tabla", Alert.AlertType.WARNING);
             }
         }
 
-        
     }
 
     public void actualizarTabla() {
@@ -172,9 +194,8 @@ public class FXMLAdminEmpresasController implements Initializable {
             FXMLLoader vistaLoad = new FXMLLoader(getClass().getResource("FXMLFormularioEmpresa.fxml"));
             Parent vista = vistaLoad.load();
 
-           // FXMLFormularioUsuarioController controlador = vistaLoad.getController();
-            //controlador.inicializarInformacion(nUsuario, esEdicion);
-
+            FXMLFormularioEmpresaController controlador = vistaLoad.getController();
+            controlador.inicializarInformacion(empresa, esEdicion);
             Stage stage = new Stage();
             Scene escenaAdmin = new Scene(vista);
             stage.setScene(escenaAdmin);

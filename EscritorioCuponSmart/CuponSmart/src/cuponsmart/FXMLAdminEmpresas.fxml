@@ -18,14 +18,15 @@
             <Font name="Ebrima Bold" size="36.0" />
          </font>
       </Label>
-      <TableView fx:id="tvEmpresas" layoutX="260.0" layoutY="245.0" prefHeight="395.0" prefWidth="804.0" style="-fx-background-color: 9C27B0;">
+      <TableView fx:id="tvEmpresas" layoutX="260.0" layoutY="245.0" prefHeight="395.0" prefWidth="850.0" style="-fx-background-color: 9C27B0;">
         <columns>
           <TableColumn fx:id="tcRFC" prefWidth="107.0" text="RFC" />
           <TableColumn fx:id="tcNombre" prefWidth="104.0" text="Nombre" />
             <TableColumn fx:id="tcNombreComercial" prefWidth="157.0" text="Nombre Comercial" />
             <TableColumn fx:id="tcTelefono" prefWidth="114.0" text="Télefono" />
             <TableColumn fx:id="tcEmail" prefWidth="110.0" text="Email" />
-            <TableColumn fx:id="tcRepLegal" prefWidth="137.0" text="Rep. Legal" />
+            <TableColumn fx:id="tcRepLegal" prefWidth="134.0" text="Rep. Legal" />
+            <TableColumn fx:id="tcStatus" prefWidth="123.0" text="Status" />
         </columns>
       </TableView>
       <TextField fx:id="tfBusquedaEmpresa" layoutX="506.0" layoutY="142.0" prefHeight="31.0" prefWidth="283.0" style="-fx-background-color: transparent; -fx-border-color: #a836a1; -fx-background-radius: 30; -fx-border-radius: 30;" />
@@ -44,7 +45,7 @@
             <Font name="Verdana Bold" size="10.0" />
          </font>
       </Button>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="772.0" layoutX="-2.0" layoutY="-8.0" strokeType="INSIDE" strokeWidth="10.0" width="238.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="772.0" layoutX="-2.0" layoutY="-8.0" strokeType="INSIDE" strokeWidth="10.0" width="194.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0" startX="0.616504854368932" startY="0.29126213592233">
                <stops>
@@ -63,7 +64,7 @@
          </stroke>
       </Rectangle>
       <ImageView fx:id="ivUsuarioSesionFoto" fitHeight="150.0" fitWidth="130.0" layoutX="52.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true" />
-      <Label layoutX="72.0" layoutY="224.0" text="Usuario:" textFill="WHITE">
+      <Label layoutX="50.0" layoutY="27.0" text="Usuario:" textFill="WHITE">
          <font>
             <Font name="Yu Gothic Bold" size="22.0" />
          </font>

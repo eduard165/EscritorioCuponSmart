@@ -90,7 +90,7 @@ public class FXMLAdminUsuariosController implements Initializable {
         if (nUsuario != null) {
             abrirFormulario(false);
         } else {
-            Utilidades.mostrarAlertaSimple("ERROR", "NO SE HA SELECCIONADO UN USUARIO EN LA TABLA PRIMERO", Alert.AlertType.ERROR);
+            Utilidades.mostrarAlertaSimple("ERROR", "NO SE HA SELECCIONADO UN USUARIO EN LA TABLA ", Alert.AlertType.ERROR);
 
         }
     }
@@ -100,13 +100,13 @@ public class FXMLAdminUsuariosController implements Initializable {
         if (nUsuario != null) {
             Mensaje respuesta = UsuarioDAO.editarUsuario(nUsuario);
             if (!respuesta.getError()) {
-                Utilidades.mostrarAlertaSimple("Registro correcto", "Se eliminó con éxito", Alert.AlertType.INFORMATION);
+                Utilidades.mostrarAlertaSimple("Eliminacion correcta", "Se eliminó con éxito", Alert.AlertType.INFORMATION);
                 actualizarTabla();
             } else {
                 Utilidades.mostrarAlertaSimple("Error", respuesta.getMensaje(), Alert.AlertType.ERROR);
             }
         } else {
-            Utilidades.mostrarAlertaSimple("Selección de usuario", "Para eliminar, debes seleccionar un paciente de la tabla", Alert.AlertType.WARNING);
+            Utilidades.mostrarAlertaSimple("Selección de usuario", "Para eliminar, debes seleccionar un usuario de la tabla", Alert.AlertType.WARNING);
         }
 
     }

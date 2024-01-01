@@ -16,8 +16,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import modelo.dao.UsuarioDAO;
-import modelo.pojo.MensajeUsuarios;
 import modelo.pojo.Usuario;
 import utils.Utilidades;
 
@@ -97,7 +95,6 @@ public class FXMLMenuPrincipalController implements Initializable {
     @FXML
     private void btnCerrarSesion(ActionEvent event) {
         try {
-
             Stage stagePrincipal = (Stage) btnIrAdminCupones.getScene().getWindow();
             FXMLLoader loadVista = new FXMLLoader(getClass().getResource("FXMLInicioSesion.fxml"));
             Parent vista = loadVista.load();
