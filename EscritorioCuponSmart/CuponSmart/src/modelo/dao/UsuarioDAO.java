@@ -36,7 +36,7 @@ public class UsuarioDAO {
             respuesta = gson.fromJson(codigoRespuesta.getContenido(), MensajeUsuarios.class);
         } else {
             respuesta.setError(true);
-            respuesta.setMensaje("Hubo un error al obtener la informacion de los pacientes, " + "intentelo nuevamente mas tarde");
+            respuesta.setMensaje("Hubo un error al obtener la informacion de los usuarios, " + "intentelo nuevamente mas tarde");
         }
         return respuesta;
 
@@ -72,16 +72,5 @@ public class UsuarioDAO {
         return msj;
     }
     
-     public static  List<Empresa> obtenerEmpresas() {
-        List<Empresa> empresas = new ArrayList<>();
-        String url = Constantes.URL_WS + "empresas/buscarEmpresas/a";
-        CodigoHTTP respuesta = ConexionHTTP.peticionGET(url);
-        if (respuesta.getCodigoRespuesta() == HttpURLConnection.HTTP_OK) {
-            Gson json = new Gson();
-            Type tipoListaEmpresa = new TypeToken<List<Empresa>>() {}.getType();
-            empresas = json.fromJson(respuesta.getContenido(), tipoListaEmpresa);
-           
-        }
-        return empresas;
-    }
+
 }

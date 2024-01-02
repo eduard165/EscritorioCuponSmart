@@ -106,24 +106,7 @@ public class FXMLAdminEmpresasController implements Initializable {
         }
     }
 
-    private void btnIrFormularioDomicilio(ActionEvent event) {
-        try {
-            FXMLLoader vistaLoad = new FXMLLoader(getClass().getResource("FXMLFormularioDomicilio.fxml"));
-            Parent vista = vistaLoad.load();
-
-            //Agregar paso de información de la sesión 
-            Stage stage = new Stage();
-            Scene escenaAdmin = new Scene(vista);
-            stage.setScene(escenaAdmin);
-            stage.setTitle("Registro de domicilio");
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setResizable(false);
-            stage.showAndWait();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+   
 
     public void inicializarInformacion(Usuario usuarioSesion) {
         this.usuarioSesion = usuarioSesion;

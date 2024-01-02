@@ -71,10 +71,8 @@ public class FXMLInicioSesionController implements Initializable {
 
     private void irPantallaPrincipal() {
         switch (usuario.getId_rol()) {
-            // General
             case 1:
                 try {
-
                     Stage stagePrincipal = (Stage) tfUsuario.getScene().getWindow();
                     FXMLLoader loadVista = new FXMLLoader(getClass().getResource("FXMLMenuPrincipal.fxml"));
                     Parent vista = loadVista.load();
@@ -92,7 +90,6 @@ public class FXMLInicioSesionController implements Initializable {
                 }
                 break;
                 
-            // Comercial
             case 2:
                 try {
 

@@ -64,18 +64,17 @@ public class FXMLFormularioEmpresaController implements Initializable {
         this.esEdicion = esEdicion;
         if (!esEdicion) {
             cargarEmpresa();
+            tfRFC.setEditable(false);
         }
     }
 
     @FXML
     private void btnGuardarEmpresa(ActionEvent event) {
         if (verificarCamposLlenos()) {
-            guardarOEditarEmpresa();
-            subirLogo();
+            guardarInformacionEnEmpresa();
             irFormularioDomicilio();
             cerrarPantalla();
         }
-
     }
 
     @FXML
@@ -91,15 +90,14 @@ public class FXMLFormularioEmpresaController implements Initializable {
         }
     }
 
-    public void validarCamposLlenos() {
-
-    }
-
     private void irFormularioDomicilio() {
         try {
             Stage stagePrincipal = (Stage) tfNombreEmpresa.getScene().getWindow();
             FXMLLoader loadVista = new FXMLLoader(getClass().getResource("FXMLFormularioDomicilio.fxml"));
             Parent vista = loadVista.load();
+            
+            FXMLFormularioDomicilioController controlador = loadVista.getController();
+            controlador.inicializarInformacionEmpresa(empresa.getRfc(), esEdicion,empresa, fotografia);
 
             Scene scene = new Scene(vista);
             stagePrincipal.setScene(scene);
@@ -129,7 +127,7 @@ public class FXMLFormularioEmpresaController implements Initializable {
     private File mostrarDialogoSeleccionado() {
         FileChooser dialogoSeleccionImg = new FileChooser();
         dialogoSeleccionImg.setTitle("Selecciona una imagen");
-        
+
         FileChooser.ExtensionFilter filtroArchivos = new FileChooser.ExtensionFilter("Archivos PNG(*.png,*.jpg,*.jpeg)", "*.PNG", "*.JPG", "*.JPEG");
         dialogoSeleccionImg.getExtensionFilters().add(filtroArchivos);
 
@@ -144,43 +142,6 @@ public class FXMLFormularioEmpresaController implements Initializable {
             ivLogoEmpresa.setImage(image);
         } catch (IOException e) {
             Utilidades.mostrarAlertaSimple("ERROR", "Hubo un error al cargar la imagen", Alert.AlertType.ERROR);
-        }
-    }
-
-    public void guardarOEditarEmpresa() {
-        try {
-            if (empresa != null) {
-                guardarInformacionEnEmpresa();
-
-                Mensaje respuesta;
-                if (!esEdicion) {
-                    respuesta = EmpresaDAO.editarEmpresa(empresa);
-                } else {
-                    respuesta = EmpresaDAO.registrarEmpresa(empresa);
-                }
-
-                if (!respuesta.getError()) {
-                    Utilidades.mostrarAlertaSimple("Operación exitosa", respuesta.getMensaje(), Alert.AlertType.INFORMATION);
-                    actualizarTablaEnVentanaPrincipal();
-                    cerrarPantalla();
-                } else {
-                    Utilidades.mostrarAlertaSimple("Error", respuesta.getMensaje(), Alert.AlertType.ERROR);
-                }
-            } else {
-                Utilidades.mostrarAlertaSimple("Selección de empresa", "Debe seleccionar una empresa", Alert.AlertType.WARNING);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void actualizarTablaEnVentanaPrincipal() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLAdminEmpresa.fxml"));
-            Parent root = loader.load();
-            FXMLAdminEmpresasController adminUsuariosController = loader.getController();
-            adminUsuariosController.actualizarTabla();
-        } catch (Exception e) {
         }
     }
 
@@ -222,15 +183,6 @@ public class FXMLFormularioEmpresaController implements Initializable {
         return camposLlenos;
     }
 
-    private void subirLogo() {
-        if (fotografia != null) {
-            Mensaje rest = EmpresaDAO.subirImagenEmpresa(empresa.getRfc(), fotografia);
-            if (!rest.getError()) {
-                Utilidades.mostrarAlertaSimple("Fotografia guardada", rest.getMensaje(), Alert.AlertType.INFORMATION);
-            } else {
-                Utilidades.mostrarAlertaSimple("Error al guardar", rest.getMensaje(), Alert.AlertType.ERROR);
-            }
-        }
-    }
+    
 
 }

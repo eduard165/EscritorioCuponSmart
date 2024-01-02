@@ -1,5 +1,6 @@
 package cuponsmart;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -18,6 +19,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import modelo.dao.EmpresaDAO;
 import modelo.dao.UsuarioDAO;
 import modelo.pojo.Empresa;
 import modelo.pojo.Mensaje;
@@ -34,6 +36,9 @@ public class FXMLFormularioUsuarioController implements Initializable {
     private Usuario usuario = new Usuario();
     private boolean band;
     int selectedIndex;
+
+
+    
     @FXML
     private TextField tfNombre;
     @FXML
@@ -135,7 +140,7 @@ public class FXMLFormularioUsuarioController implements Initializable {
     private void cargarInformacionEmpresas(String rolSeleccionado) {
         if (rolSeleccionado != null) {
             empresa = FXCollections.observableArrayList();
-            List<Empresa> inf = UsuarioDAO.obtenerEmpresas();
+            List<Empresa> inf = EmpresaDAO.cargarEmpresas();
             empresa.addAll(inf);
             cbEmpresa.setItems(empresa);
         }
