@@ -39,6 +39,8 @@ public class FXMLFormularioSucursalController implements Initializable {
     private TextField tfLongitud;
     @FXML
     private TextField tfEmailSucursal;
+    @FXML
+    private ComboBox<?> cbEmpresaSucursal;
 
     /**
      * Initializes the controller class.

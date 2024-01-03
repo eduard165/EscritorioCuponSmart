@@ -64,11 +64,6 @@
          </stroke>
       </Rectangle>
       <ImageView fx:id="ivUsuarioSesionFoto" fitHeight="150.0" fitWidth="130.0" layoutX="52.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true" />
-      <Label layoutX="50.0" layoutY="27.0" text="Usuario:" textFill="WHITE">
-         <font>
-            <Font name="Yu Gothic Bold" size="22.0" />
-         </font>
-      </Label>
       <Label fx:id="lbUsuarioSesion" layoutX="79.0" layoutY="265.0" prefHeight="21.0" prefWidth="77.0" textFill="WHITE" />
       <ImageView fitHeight="39.0" fitWidth="47.0" layoutX="797.0" layoutY="139.0" pickOnBounds="true" preserveRatio="true">
          <image>

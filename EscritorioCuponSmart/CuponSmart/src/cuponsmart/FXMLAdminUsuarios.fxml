@@ -52,22 +52,7 @@
                   </LinearGradient>
                </stroke>
             </Rectangle>
-            <Button layoutX="31.0" layoutY="626.0" mnemonicParsing="false" onAction="#btnMenuPrincipal" prefHeight="47.0" prefWidth="134.0" style="-fx-background-color: #5125ad; -fx-border-color: #000000}; -fx-border-radius: 20; -fx-background-radius: 20;" text="Regresar a menú" textFill="WHITE">
-               <font>
-                  <Font name="Yu Gothic UI Bold" size="14.0" />
-               </font>
-            </Button>
-            <ImageView fx:id="ivUsuarioSesionFoto" fitHeight="99.0" fitWidth="117.0" layoutX="52.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true" />
-            <Label layoutX="63.0" layoutY="287.0" text="Usuario:" textFill="WHITE">
-               <font>
-                  <Font name="Yu Gothic Bold" size="21.0" />
-               </font>
-            </Label>
-            <Label fx:id="lbUsuarioSesion" layoutX="63.0" layoutY="324.0" prefHeight="18.0" prefWidth="72.0" text="usuario" textFill="WHITE">
-               <font>
-                  <Font name="Yu Gothic Regular" size="18.0" />
-               </font>
-            </Label>
+            <ImageView fx:id="ivUsuarioSesionFoto" fitHeight="99.0" fitWidth="117.0" layoutX="29.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </Pane>
       <Button fx:id="btnRegistroUsuario" layoutX="1069.0" layoutY="276.0" mnemonicParsing="false" onAction="#btnRegistroUsuario" prefHeight="59.0" prefWidth="102.0" style="-fx-background-color: #0000; -fx-border-radius: 20; -fx-background-radius: 20;" textFill="WHITE">

@@ -39,8 +39,6 @@ public class FXMLAdminUsuariosController implements Initializable {
     @FXML
     private TextField tfBusqueda;
     @FXML
-    private Label lbUsuarioSesion;
-    @FXML
     private ImageView ivUsuarioSesionFoto;
     @FXML
     private Button btnRegistroUsuario;
@@ -73,10 +71,6 @@ public class FXMLAdminUsuariosController implements Initializable {
     public void inicializarInformacion(Usuario usuarioSesion) {
         this.usuarioSesion = usuarioSesion;
         consultarInformacion();
-    }
-// falta
-    @FXML
-    private void btnMenuPrincipal(ActionEvent event) {
     }
 
     @FXML

@@ -41,16 +41,6 @@
                </fill>
             </Rectangle>
             <ImageView fx:id="ivUsuarioSesionFoto" fitHeight="141.0" fitWidth="130.0" layoutX="45.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true" />
-            <Label layoutX="71.0" layoutY="241.0" text="Usuario:" textFill="WHITE">
-               <font>
-                  <Font name="Yu Gothic Bold" size="19.0" />
-               </font>
-            </Label>
-            <Label fx:id="lbUsuarioSesion" layoutX="71.0" layoutY="273.0" prefHeight="18.0" prefWidth="78.0" textFill="WHITE">
-               <font>
-                  <Font name="Tahoma" size="14.0" />
-               </font>
-            </Label>
          </children>
       </Pane>
       <Button fx:id="btnRegistroSuc" layoutX="1069.0" layoutY="258.0" mnemonicParsing="false" onAction="#btnRegistroSucursal" prefHeight="57.0" prefWidth="117.0" style="-fx-background-color: #0000;" textFill="WHITE">

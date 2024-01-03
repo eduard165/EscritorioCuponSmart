@@ -42,8 +42,6 @@ public class FXMLAdminSucursalesController implements Initializable {
     @FXML
     private TableColumn<?, ?> tcRepLegal;
     @FXML
-    private Label lbUsuarioSesion;
-    @FXML
     private TableView<?> tvSucursales;
     @FXML
     private ImageView ivUsuarioSesionFoto;
@@ -53,7 +51,6 @@ public class FXMLAdminSucursalesController implements Initializable {
     private Button btnEdicionSuc;
     @FXML
     private Button btnEliminarSuc;
-    @FXML
     private Button btnFormularioDom;
     @FXML
     private TextField tfBusquedaSucursal;
@@ -111,7 +108,6 @@ public class FXMLAdminSucursalesController implements Initializable {
     private void btnEliminarSucursal(ActionEvent event) {
     }
 
-    @FXML
     private void btnIrFormularioDomicilio(ActionEvent event) {
          try{
             FXMLLoader vistaLoad = new FXMLLoader(getClass().getResource("FXMLFormularioDomicilio.fxml"));

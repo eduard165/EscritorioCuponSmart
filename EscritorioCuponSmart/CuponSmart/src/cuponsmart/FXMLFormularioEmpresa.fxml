@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
@@ -11,6 +13,17 @@
 
 <AnchorPane id="AnchorPane" prefHeight="801.0" prefWidth="753.0" style="-fx-background-color: #5125ad;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cuponsmart.FXMLFormularioEmpresaController">
    <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="802.0" stroke="BLACK" strokeType="INSIDE" width="758.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0" startX="0.319047619047619" startY="0.3142857142857143">
+               <stops>
+                  <Stop color="#a32ca0" />
+                  <Stop color="#5021eb7b" offset="0.5910652920962199" />
+                  <Stop color="#5021eb" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
       <Text fill="WHITE" layoutX="165.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Por favor, introduzca los datos de la empresa ">
          <font>
             <Font name="Segoe UI Bold" size="18.0" />
@@ -67,8 +80,14 @@
          <font>
             <Font name="Tahoma" size="15.0" />
          </font></Label>
-      <Button layoutX="194.0" layoutY="710.0" mnemonicParsing="false" onAction="#btnGuardarEmpresa" prefHeight="54.0" prefWidth="105.0" text="Siguiente" />
-      <Button layoutX="443.0" layoutY="710.0" mnemonicParsing="false" onAction="#btnCancelar" prefHeight="54.0" prefWidth="113.0" text="Cancelar" />
+      <Button layoutX="194.0" layoutY="710.0" mnemonicParsing="false" onAction="#btnGuardarEmpresa" prefHeight="54.0" prefWidth="105.0" style="-fx-background-color: #2085e3; -fx-background-radius: 30;" text="Siguiente" textFill="WHITE">
+         <font>
+            <Font name="Yu Gothic Bold" size="14.0" />
+         </font></Button>
+      <Button layoutX="443.0" layoutY="710.0" mnemonicParsing="false" onAction="#btnCancelar" prefHeight="54.0" prefWidth="113.0" style="-fx-background-color: #d4428d; -fx-background-radius: 30;" text="Cancelar" textFill="WHITE">
+         <font>
+            <Font name="Yu Gothic Bold" size="15.0" />
+         </font></Button>
       <GridPane hgap="10.0" layoutX="189.0" layoutY="446.0" prefHeight="216.0" prefWidth="360.0" vgap="10.0">
          <children>
             <TextField fx:id="tfTelefono" prefHeight="31.0" prefWidth="298.0" promptText="000000000" GridPane.rowIndex="1" />
