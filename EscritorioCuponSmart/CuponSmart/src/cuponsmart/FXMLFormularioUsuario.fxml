@@ -88,20 +88,26 @@
          <font>
             <Font name="Yu Gothic Bold" size="18.0" />
          </font></Button>
-      <GridPane hgap="10.0" layoutX="185.0" layoutY="387.0" prefHeight="149.0" prefWidth="358.0" vgap="10.0">
+      <GridPane hgap="10.0" layoutX="210.0" layoutY="390.0" prefHeight="166.0" prefWidth="358.0" vgap="10.0">
          <children>
             <TextField fx:id="tfUser" prefHeight="31.0" prefWidth="298.0" promptText="000000000" GridPane.rowIndex="1" />
-            <TextField fx:id="tfPassword" prefHeight="30.0" prefWidth="308.0" promptText="empresa@google.com" GridPane.rowIndex="3" />
+            <TextField fx:id="tfPassword" prefHeight="44.0" prefWidth="313.0" promptText="empresa@google.com" GridPane.rowIndex="5" />
             <Label text="Nombre de usuario" textFill="WHITE">
                <font>
                   <Font name="Segoe UI Bold" size="12.0" />
                </font>
             </Label>
-            <Label text="Contraseña" textFill="WHITE" GridPane.rowIndex="2">
+            <Label text="Contraseña" textFill="WHITE" GridPane.rowIndex="4">
                <font>
                   <Font name="Segoe UI Bold" size="12.0" />
                </font>
             </Label>
+            <Label text="Correo electrónico" textFill="WHITE" GridPane.rowIndex="2">
+               <font>
+                  <Font name="Segoe UI Bold" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tfCorreoElectronico" GridPane.rowIndex="3" />
          </children>
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="308.0" minWidth="10.0" prefWidth="308.0" />
@@ -111,8 +117,10 @@
          </padding>
          <rowConstraints>
             <RowConstraints maxHeight="49.0" minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="84.0" minHeight="0.0" prefHeight="36.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="87.0" minHeight="0.0" prefHeight="19.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="84.0" minHeight="0.0" prefHeight="20.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="84.0" minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="84.0" minHeight="10.0" prefHeight="18.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="87.0" minHeight="0.0" prefHeight="16.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="87.0" minHeight="10.0" prefHeight="27.0" vgrow="SOMETIMES" />
          </rowConstraints>
       </GridPane>
