@@ -110,4 +110,16 @@ public class EmpresaDAO {
         }
         return mensaje;
     }
+    public static Empresa descargarImagenEmpresa(Empresa empresa) {
+         Empresa respuesta = new Empresa();
+        String url = Constantes.URL_WS + "empresas/buscarLogoEmpresa/" + empresa.getRfc();
+        CodigoHTTP codigoHTTP = ConexionHTTP.peticionGET(url);
+
+        if (codigoHTTP.getCodigoRespuesta() == HttpURLConnection.HTTP_OK) {
+            Gson gson = new Gson();
+            respuesta = gson.fromJson(codigoHTTP.getContenido(), Empresa.class);
+
+        } 
+        return respuesta;
+    }
 }

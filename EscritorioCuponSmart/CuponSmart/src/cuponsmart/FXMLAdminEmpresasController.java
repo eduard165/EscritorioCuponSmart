@@ -1,11 +1,17 @@
 package cuponsmart;
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Base64;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,6 +29,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javax.imageio.ImageIO;
 import modelo.dao.EmpresaDAO;
 import modelo.dao.UsuarioDAO;
 import modelo.pojo.Empresa;
@@ -71,6 +78,7 @@ public class FXMLAdminEmpresasController implements Initializable {
         Empresas = FXCollections.observableArrayList();
         inicializarGraficosAdmin();
         configurarColumnasTabla();
+        configurarBusqueda();
     }
 
     @FXML
@@ -106,8 +114,6 @@ public class FXMLAdminEmpresasController implements Initializable {
         }
     }
 
-   
-
     public void inicializarInformacion(Usuario usuarioSesion) {
         this.usuarioSesion = usuarioSesion;
         consultarInformacion();
@@ -141,7 +147,9 @@ public class FXMLAdminEmpresasController implements Initializable {
                 Utilidades.mostrarAlertaSimple("ERROR", "Hubo un error en carga la tabla", Alert.AlertType.WARNING);
             }
         }
-
+        tvEmpresas.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            cargarImagenEmpresa(newValue);
+        });
     }
 
     public void actualizarTabla() {
@@ -190,4 +198,60 @@ public class FXMLAdminEmpresasController implements Initializable {
             e.printStackTrace();
         }
     }
+
+    private void configurarBusqueda() {
+        tfBusquedaEmpresa.textProperty().addListener((textObservable, oldText, newText) -> {
+            if (newText.isEmpty()) {
+                tvEmpresas.setItems(Empresas);
+                return;
+            }
+            buscarEmpresas(newText);
+        });
+    }
+
+    private void buscarEmpresas(String busqueda) {
+        FilteredList<Empresa> empresasFiltradas = new FilteredList<>(Empresas);
+        Predicate<Empresa> predicado = empresa
+                -> empresa.getNombre().toLowerCase().contains(busqueda.toLowerCase())
+                || empresa.getNombre_comercial().toLowerCase().contains(busqueda.toLowerCase())
+                || empresa.getRfc().toLowerCase().contains(busqueda.toLowerCase())
+                || empresa.getRepresentante_legal().toLowerCase().contains(busqueda.toLowerCase())
+                || empresa.getEmail().toLowerCase().contains(busqueda.toLowerCase())
+                || empresa.getTelefono().toLowerCase().contains(busqueda.toLowerCase())
+                || empresa.nombreStatusProperty().getValue().toLowerCase().contains(busqueda.toLowerCase());
+
+        empresasFiltradas.setPredicate(predicado);
+        tvEmpresas.setItems(empresasFiltradas);
+    }
+
+    private void cargarImagenEmpresa(Empresa empresaSeleccionada) {
+        if (empresaSeleccionada != null) {
+            String base64Image = EmpresaDAO.descargarImagenEmpresa(empresaSeleccionada).getLogoBase64();
+
+            if (base64Image != null && !base64Image.isEmpty()) {
+                try {
+                    byte[] imageBytes = Base64.getDecoder().decode(base64Image);
+                    ByteArrayInputStream bis = new ByteArrayInputStream(imageBytes);
+                    BufferedImage bufferedImage = ImageIO.read(bis);
+
+                    Image imagenEmpresa = SwingFXUtils.toFXImage(bufferedImage, null);
+                    ivUsuarioSesionFoto.setImage(imagenEmpresa);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    establecerImagenPredeterminada();
+                }
+            } else {
+                establecerImagenPredeterminada();
+            }
+        } else {
+            establecerImagenPredeterminada();
+        }
+    }
+
+    private void establecerImagenPredeterminada() {
+        String pathImagenPredeterminada = "recursos/imagen_default.png";
+        Image imagenPredeterminada = new Image(getClass().getClassLoader().getResourceAsStream(pathImagenPredeterminada));
+        ivUsuarioSesionFoto.setImage(imagenPredeterminada);
+    }
+
 }
