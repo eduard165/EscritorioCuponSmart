@@ -20,6 +20,7 @@ import javafx.stage.Stage;
 import javax.tools.Diagnostic;
 import modelo.dao.DomicilioDAO;
 import modelo.dao.EmpresaDAO;
+import modelo.dao.SucursalDAO;
 import modelo.pojo.Direccion;
 import modelo.pojo.Empresa;
 import modelo.pojo.Estado;
@@ -29,6 +30,9 @@ import modelo.pojo.Sucursal;
 import utils.Utilidades;
 
 public class FXMLFormularioDomicilioController implements Initializable {
+
+    private FXMLAdminSucursalesController adminSucursalesController;
+    private FXMLAdminEmpresasController adminEmpresasController;
 
     Direccion direccion = new Direccion();
     String empresa_rfc = null;
@@ -73,11 +77,13 @@ public class FXMLFormularioDomicilioController implements Initializable {
         }
     }
 
-    public void inicializarInformacionEmpresa(Integer id_sucursal, boolean esEdicion, Sucursal sucursal) {
-        this.id_sucursal = id_sucursal;
+    public void inicializarInformacionSucursal(Integer id_sucursal, boolean esEdicion, Sucursal sucursal) {
         this.esEdicion = esEdicion;
         if (esEdicion) {
+            this.id_sucursal = id_sucursal;
             cargarInformacion();
+        } else {
+            this.id_sucursal = 1;
         }
     }
 
@@ -85,11 +91,13 @@ public class FXMLFormularioDomicilioController implements Initializable {
     private void btnGuardarDomicilio(ActionEvent event) {
         if (camposLlenos()) {
             if (empresa_rfc != null) {
+
                 guardarInformacionEnDireccion();
                 guardarOEditarEmpresa();
                 subirLogoEmpresa();
             } else if (id_sucursal != 0) {
-                //guardarOEditarSucursal();
+                guardarInformacionEnDireccion();
+                guardarOEditarSucursal();
             }
             cerrarPantalla();
         } else {
@@ -105,14 +113,14 @@ public class FXMLFormularioDomicilioController implements Initializable {
     private void cargarInformacion() {
 
         if (empresa_rfc != null) {
-            direccion = DomicilioDAO.cargarDireccionEmpresa(direccion, empresa_rfc);
+            direccion = DomicilioDAO.cargarDireccionEmpresa(empresa_rfc);
             tfCalle.setText(direccion.getCalle());
             tfColonia.setText(direccion.getColonia());
             tfNumero.setText(String.valueOf(direccion.getNumero()));
             tfCodigoPostal.setText(direccion.getCodigo_postal());
         }
         if (id_sucursal != 0) {
-            direccion = DomicilioDAO.cargarDireccionSucursal(direccion, id_sucursal);
+            direccion = DomicilioDAO.cargarDireccionSucursal(id_sucursal);
             tfCalle.setText(direccion.getCalle());
             tfColonia.setText(direccion.getColonia());
             tfNumero.setText(String.valueOf(direccion.getNumero()));
@@ -122,10 +130,10 @@ public class FXMLFormularioDomicilioController implements Initializable {
     }
 
     public void guardarInformacionEnDireccion() {
-        if(empresa_rfc != null){
+        if (empresa_rfc != null) {
             direccion.setTipo_direccion(1);
         }
-          if(id_sucursal != 0){
+        if (id_sucursal != 0) {
             direccion.setTipo_direccion(3);
         }
         direccion.setCalle(tfCalle.getText());
@@ -180,7 +188,7 @@ public class FXMLFormularioDomicilioController implements Initializable {
 
             if (!respuesta.getError()) {
                 Utilidades.mostrarAlertaSimple("Operación exitosa", respuesta.getMensaje() + "\n" + respuesta2.getMensaje(), Alert.AlertType.INFORMATION);
-                actualizarTablaEnVentanaPrincipal();
+                adminEmpresasController.actualizarTabla();
                 cerrarPantalla();
             } else {
                 Utilidades.mostrarAlertaSimple("Error", respuesta.getMensaje() + "\n" + respuesta2.getMensaje(), Alert.AlertType.ERROR);
@@ -191,40 +199,29 @@ public class FXMLFormularioDomicilioController implements Initializable {
         }
     }
 
-    /*
     public void guardarOEditarSucursal() {
         try {
             Mensaje respuesta;
             Mensaje respuesta2;
 
             if (!esEdicion) {
-                respuesta = SucursalDAO.editarSucursal(sucursal); // Reemplaza SucursalDAO con tu clase DAO para las sucursales
-                respuesta2 = DomicilioDAO.editarDireccion(direccion); // Si es necesario editar la dirección de la sucursal
+                respuesta = SucursalDAO.editarSucursal(sucursal);
+                respuesta2 = DomicilioDAO.editarDireccion(direccion);
             } else {
-                respuesta = SucursalDAO.registrarSucursal(sucursal); // Reemplaza SucursalDAO con tu clase DAO para las sucursales
-                respuesta2 = DomicilioDAO.registrarDireccion(direccion); // Si es necesario registrar una nueva dirección para la sucursal
+                respuesta = SucursalDAO.registrarSucursal(sucursal);
+                respuesta2 = DomicilioDAO.registrarDireccion(direccion);
             }
 
             if (!respuesta.getError()) {
                 Utilidades.mostrarAlertaSimple("Operación exitosa", respuesta.getMensaje() + "\n" + respuesta2.getMensaje(), Alert.AlertType.INFORMATION);
-                actualizarTablaEnVentanaPrincipal(); // Actualizar la tabla de sucursales en la ventana principal si es necesario
-                cerrarPantalla(); // Cerrar la ventana actual después de completar la operación
+                adminSucursalesController.actualizarTabla();
+                cerrarPantalla();
             } else {
                 Utilidades.mostrarAlertaSimple("Error", respuesta.getMensaje() + "\n" + respuesta2.getMensaje(), Alert.AlertType.ERROR);
             }
 
         } catch (Exception e) {
             e.printStackTrace();
-        }
-    }
-     */
-    private void actualizarTablaEnVentanaPrincipal() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLAdminEmpresa.fxml"));
-            Parent root = loader.load();
-            FXMLAdminEmpresasController adminUsuariosController = loader.getController();
-            adminUsuariosController.actualizarTabla();
-        } catch (Exception e) {
         }
     }
 
@@ -257,4 +254,10 @@ public class FXMLFormularioDomicilioController implements Initializable {
         return true;
     }
 
+    public void setAdminSucursalesController(FXMLAdminSucursalesController controller) {
+        this.adminSucursalesController = controller;
+    }
+    public void setAdminEmpresasController(FXMLAdminEmpresasController controller) {
+        this.adminEmpresasController = controller;
+    }
 }

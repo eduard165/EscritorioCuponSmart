@@ -41,9 +41,9 @@
               </rowConstraints>
                <children>
                   <TextField fx:id="tfNombreSucursal" prefHeight="30.0" prefWidth="280.0" GridPane.columnIndex="1" />
-                  <TextField fx:id="tfNombreComercial" prefHeight="31.0" prefWidth="237.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="tfTelefono" prefHeight="31.0" prefWidth="237.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <Label text="Nombre de la sucursal" textFill="WHITE" />
-                  <Label text="Nombre comercial" textFill="WHITE" GridPane.rowIndex="1" />
+                  <Label text="Telefono" textFill="WHITE" GridPane.rowIndex="1" />
                   <Label text="Nombre de encargado" textFill="WHITE" GridPane.rowIndex="2" />
                   <TextField fx:id="tfNombreEncargado" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <Label text="Empresa" textFill="WHITE" GridPane.rowIndex="3" />
@@ -69,12 +69,10 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label text="E-mail" textFill="WHITE" />
                   <Label text="Latitud" textFill="WHITE" GridPane.rowIndex="1" />
                   <Label text="Longitud" textFill="WHITE" GridPane.rowIndex="2" />
                   <TextField fx:id="tfLatitud" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <TextField fx:id="tfLongitud" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <TextField fx:id="tfEmailSucursal" GridPane.columnIndex="1" />
                </children>
             </GridPane>
          </children>

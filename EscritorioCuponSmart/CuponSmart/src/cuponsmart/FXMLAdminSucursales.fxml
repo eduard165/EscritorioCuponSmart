@@ -17,16 +17,20 @@
             <Font name="Ebrima Bold" size="36.0" />
          </font>
       </Label>
-      <TableView fx:id="tvSucursales" layoutX="227.0" layoutY="244.0" prefHeight="432.0" prefWidth="815.0" style="-fx-background-color: 9C27B0;">
+      <TableView fx:id="tbSucursales" layoutX="227.0" layoutY="244.0" prefHeight="432.0" prefWidth="815.0" style="-fx-background-color: 9C27B0;">
         <columns>
-          <TableColumn fx:id="tcNombreSucursal" prefWidth="179.0" text="Nombre" />
-          <TableColumn fx:id="tcEncargado" prefWidth="220.0" text="Encargado" />
-            <TableColumn fx:id="tcEmpresa" prefWidth="139.0" text="Empresa" />
-            <TableColumn fx:id="tcEmail" prefWidth="163.0" text="E-mail" />
-            <TableColumn fx:id="tcRepLegal" minWidth="0.0" prefWidth="0.0" />
+          <TableColumn fx:id="clNombreSucursal" prefWidth="144.0" text="Nombre" />
+          <TableColumn fx:id="clEncargado" prefWidth="162.0" text="Encargado" />
+            <TableColumn fx:id="clEmpresa" prefWidth="155.0" text="Nombre empresa" />
+            <TableColumn fx:id="clTelefono" prefWidth="132.0" text="Telefono" />
+            <TableColumn fx:id="clLongitud" minWidth="0.0" prefWidth="110.0" text="Longitud" />
+            <TableColumn fx:id="clLatitud" prefWidth="110.0" text="latitud" />
         </columns>
       </TableView>
-      <TextField fx:id="tfBusquedaSucursal" layoutX="518.0" layoutY="154.0" prefHeight="31.0" prefWidth="283.0" style="-fx-background-color: transparent; -fx-border-color: #a836a1; -fx-background-radius: 30; -fx-border-radius: 30;" />
+      <TextField fx:id="tfBusquedaSucursal" layoutX="518.0" layoutY="154.0" prefHeight="31.0" prefWidth="283.0" promptText="Barra de busqueda" style="-fx-background-color: transparent; -fx-border-color: #a836a1; -fx-background-radius: 30; -fx-border-radius: 30;">
+         <font>
+            <Font size="16.0" />
+         </font></TextField>
       
        <Pane layoutX="-4.0" prefHeight="727.0" prefWidth="218.0" style="-fx-background-color: #5125ad;">
          <children>
@@ -40,7 +44,10 @@
                   </LinearGradient>
                </fill>
             </Rectangle>
-            <ImageView fx:id="ivUsuarioSesionFoto" fitHeight="141.0" fitWidth="130.0" layoutX="45.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="ivUsuarioSesionFoto" fitHeight="141.0" fitWidth="130.0" layoutX="45.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="lbDireccion" layoutX="21.0" layoutY="230.0" prefHeight="33.0" prefWidth="172.0" text="Direccion" />
+            <Label fx:id="lbInformacionDireccion" layoutX="5.0" layoutY="277.0" prefHeight="365.0" prefWidth="207.0" text="..." />
+            <Label fx:id="lbUsuarioSesion" layoutX="90.0" layoutY="178.0" text="Label" />
          </children>
       </Pane>
       <Button fx:id="btnRegistroSuc" layoutX="1069.0" layoutY="258.0" mnemonicParsing="false" onAction="#btnRegistroSucursal" prefHeight="57.0" prefWidth="117.0" style="-fx-background-color: #0000;" textFill="WHITE">

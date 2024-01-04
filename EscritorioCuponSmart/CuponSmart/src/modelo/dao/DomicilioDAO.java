@@ -48,7 +48,7 @@ public class DomicilioDAO {
         System.out.println(municipios);
         return municipios;
     }
-     public static Direccion cargarDireccionEmpresa(Direccion direccion, String empresa_rfc) {
+     public static Direccion cargarDireccionEmpresa( String empresa_rfc) {
        Direccion respuesta = new Direccion();
         String url = Constantes.URL_WS + "direccion/buscar/empresa/" + empresa_rfc;
         CodigoHTTP codigoRespuesta = ConexionHTTP.peticionGET(url);
@@ -61,7 +61,7 @@ public class DomicilioDAO {
 
     }
      
-      public static Direccion cargarDireccionSucursal(Direccion direccion, Integer id_sucursal) {
+      public static Direccion cargarDireccionSucursal( Integer id_sucursal) {
         Direccion respuesta = new Direccion();
         String url = Constantes.URL_WS + "direccion/buscar/sucursal/" + id_sucursal;
         CodigoHTTP codigoRespuesta = ConexionHTTP.peticionGET(url);

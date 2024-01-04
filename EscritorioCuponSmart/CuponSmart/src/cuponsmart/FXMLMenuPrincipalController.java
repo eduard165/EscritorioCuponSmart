@@ -56,8 +56,8 @@ public class FXMLMenuPrincipalController implements Initializable {
             FXMLLoader vistaLoad = new FXMLLoader(getClass().getResource("FXMLAdminSucursales.fxml"));
             Parent vista = vistaLoad.load();
 
-            // FXMLAdminUsuariosController controlador = vistaLoad.getController();
-            // controlador.inicializarInformacion(usuarioSesion.getRolID());
+             FXMLAdminSucursalesController controlador = vistaLoad.getController();
+            controlador.inicializarInformacion(usuarioSesion);
             Stage stage = new Stage();
             Scene escena = new Scene(vista);
             stage.setScene(escena);
