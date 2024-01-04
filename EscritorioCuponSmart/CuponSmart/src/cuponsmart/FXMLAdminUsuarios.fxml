@@ -27,7 +27,7 @@
             <TableColumn fx:id="colRol" minWidth="0.0" prefWidth="154.0" text="Rol" />
         </columns>
       </TableView>
-      <TextField fx:id="tfBusqueda" layoutX="496.0" layoutY="157.0" prefHeight="31.0" prefWidth="283.0" style="-fx-background-radius: 30; -fx-border-color: #a836a1; -fx-border-radius: 30;">
+      <TextField fx:id="tfBusqueda" layoutX="496.0" layoutY="157.0" prefHeight="31.0" prefWidth="283.0" promptText="Barra de busqueda" style="-fx-background-radius: 30; -fx-border-color: #a836a1; -fx-border-radius: 30;">
          <font>
             <Font name="Yu Gothic Regular" size="18.0" />
          </font></TextField>
@@ -53,6 +53,11 @@
                </stroke>
             </Rectangle>
             <ImageView fx:id="ivUsuarioSesionFoto" fitHeight="99.0" fitWidth="117.0" layoutX="29.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="lbUsuario" layoutX="42.0" layoutY="204.0" prefHeight="46.0" prefWidth="91.0" text="Label" textAlignment="CENTER">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
       <Button fx:id="btnRegistroUsuario" layoutX="1069.0" layoutY="276.0" mnemonicParsing="false" onAction="#btnRegistroUsuario" prefHeight="59.0" prefWidth="102.0" style="-fx-background-color: #0000; -fx-border-radius: 20; -fx-background-radius: 20;" textFill="WHITE">

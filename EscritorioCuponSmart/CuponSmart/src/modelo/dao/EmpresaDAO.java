@@ -73,15 +73,20 @@ public class EmpresaDAO {
 
     public static Mensaje eliminarEmpresa(String rfc) {
         Mensaje msj = new Mensaje();
-        String url = Constantes.URL_WS + "empresas/eliminar/" + rfc;
-        Gson gson = new Gson();
-        String parametros = gson.toJson(msj);
-        CodigoHTTP respuesta = ConexionHTTP.peticionDELETE(url, parametros);
-        if (respuesta.getCodigoRespuesta() == HttpURLConnection.HTTP_OK) {
-            msj = gson.fromJson(respuesta.getContenido(), Mensaje.class);
-        } else {
+        try {
+            String url = Constantes.URL_WS + "empresas/eliminar";
+            String parametros = "rfc=" + rfc;
+            Gson gson = new Gson();
+            CodigoHTTP respuesta = ConexionHTTP.peticionDELETE(url, parametros);
+            if (respuesta.getCodigoRespuesta() == HttpURLConnection.HTTP_OK) {
+                msj = gson.fromJson(respuesta.getContenido(), Mensaje.class);
+            } else {
+                msj.setError(true);
+                msj.setMensaje("Error en la petición para eliminar la empresa");
+            }
+        } catch (Exception ex) {
             msj.setError(true);
-            msj.setMensaje("Error en la peticion para editar la empresa");
+            msj.setMensaje("Excepción al eliminar la empresa: " + ex.getMessage());
         }
         return msj;
     }

@@ -1,7 +1,5 @@
 package cuponsmart;
 
-import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -14,7 +12,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -23,22 +20,18 @@ import modelo.dao.EmpresaDAO;
 import modelo.dao.UsuarioDAO;
 import modelo.pojo.Empresa;
 import modelo.pojo.Mensaje;
-import modelo.pojo.MensajeUsuarios;
 import modelo.pojo.Usuario;
 import utils.Utilidades;
 
 public class FXMLFormularioUsuarioController implements Initializable {
 
-    private ObservableList<String> id_rol;
+    private FXMLAdminUsuariosController adminUsuariosController;
     private ObservableList<Empresa> empresa;
 
-    private Empresa cEmpresa = new Empresa();
     private Usuario usuario = new Usuario();
     private boolean band;
     int selectedIndex;
 
-
-    
     @FXML
     private TextField tfNombre;
     @FXML
@@ -55,6 +48,8 @@ public class FXMLFormularioUsuarioController implements Initializable {
     private ComboBox<Empresa> cbEmpresa;
     @FXML
     private TextField tfCurp;
+    @FXML
+    private TextField tfCorreoElectronico;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -68,6 +63,7 @@ public class FXMLFormularioUsuarioController implements Initializable {
         this.band = band;
         if (!band) {
             cargarUsuario();
+            cbRol.setEditable(false);
         }
     }
 
@@ -98,24 +94,26 @@ public class FXMLFormularioUsuarioController implements Initializable {
         if (usuario != null) {
             Mensaje respuesta = UsuarioDAO.editarUsuario(usuario);
             if (!respuesta.getError()) {
-                actualizarTablaEnVentanaPrincipal();
+                adminUsuariosController.actualizarTabla();
                 Stage stage = (Stage) tfApellidoMat.getScene().getWindow();
                 stage.close();
             } else {
                 Utilidades.mostrarAlertaSimple("Error", respuesta.getMensaje(), Alert.AlertType.ERROR);
             }
         } else {
-            Utilidades.mostrarAlertaSimple("Selección de usuario", "Para eliminar, debes seleccionar un paciente de la tabla", Alert.AlertType.WARNING);
+            Utilidades.mostrarAlertaSimple("Selección de usuario", "Para eliminar, debes seleccionar un usuario de la tabla", Alert.AlertType.WARNING);
         }
     }
 
     public void registrarUsuario() {
         descargarUsuario();
+        System.out.print(this.usuario.toString());
+
         if (usuario != null) {
 
             Mensaje respuesta = UsuarioDAO.registrarUsuario(usuario);
             if (!respuesta.getError()) {
-                actualizarTablaEnVentanaPrincipal();
+                adminUsuariosController.actualizarTabla();
                 Stage stage = (Stage) tfApellidoPat.getScene().getWindow();
                 stage.close();
             } else {
@@ -123,17 +121,6 @@ public class FXMLFormularioUsuarioController implements Initializable {
             }
         } else {
             Utilidades.mostrarAlertaSimple("ERROR", "Para guardar debes llenar todos los campos", Alert.AlertType.WARNING);
-        }
-    }
-
-    private void actualizarTablaEnVentanaPrincipal() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLAdminUsuarios.fxml"));
-            Parent root = loader.load();
-            FXMLAdminUsuariosController adminUsuariosController = loader.getController();
-
-            adminUsuariosController.actualizarTabla();
-        } catch (Exception e) {
         }
     }
 
@@ -152,10 +139,12 @@ public class FXMLFormularioUsuarioController implements Initializable {
         tfApellidoMat.setText(usuario.getApellido_materno());
         tfPassword.setText(usuario.getPassword());
         tfUser.setText(usuario.getUsername());
+        tfCurp.setText(usuario.getCurp());
+        tfCorreoElectronico.setText(usuario.getCorreo_electronico());
 
         int idRol = usuario.getId_rol();
         if (idRol > 0 && idRol <= cbRol.getItems().size()) {
-            cbRol.getSelectionModel().select(idRol - 1); 
+            cbRol.getSelectionModel().select(idRol - 1);
         }
 
         String rfcUsuario = usuario.getEmpresa_rfc();
@@ -176,13 +165,14 @@ public class FXMLFormularioUsuarioController implements Initializable {
         return -1;
     }
 
-
     private void descargarUsuario() {
         usuario.setNombre(tfNombre.getText());
         usuario.setApellido_paterno(tfApellidoPat.getText());
         usuario.setApellido_materno(tfApellidoMat.getText());
         usuario.setUsername(tfUser.getText());
         usuario.setPassword(tfPassword.getText());
+        usuario.setCurp(tfCurp.getText());
+        usuario.setCorreo_electronico(tfCorreoElectronico.getText());
 
         if (usuario.getEmpresa_rfc() != null) {
             Empresa empresaSeleccionada = cbEmpresa.getSelectionModel().getSelectedItem();
@@ -212,22 +202,21 @@ public class FXMLFormularioUsuarioController implements Initializable {
         return todosLlenos;
     }
 
-private void configuracionSeleccionRol() {
-    cbRol.valueProperty().addListener(new ChangeListener<String>() {
-        @Override
-        public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-            selectedIndex = cbRol.getSelectionModel().getSelectedIndex();
+    private void configuracionSeleccionRol() {
+        cbRol.valueProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                selectedIndex = cbRol.getSelectionModel().getSelectedIndex();
 
-            if (selectedIndex == 1) {
-                cbEmpresa.setDisable(false);
-                cargarInformacionEmpresas(newValue); 
-            } else if (selectedIndex == 0) {
-                cbEmpresa.setDisable(true);
+                if (selectedIndex == 1) {
+                    cbEmpresa.setDisable(false);
+                    cargarInformacionEmpresas(newValue);
+                } else if (selectedIndex == 0) {
+                    cbEmpresa.setDisable(true);
+                }
             }
-        }
-    });
-}
-
+        });
+    }
 
     private void cargarDatosComboBox() {
         ObservableList<String> roles = FXCollections.observableArrayList("Usuario General", "Usuario Comercial");
@@ -235,4 +224,18 @@ private void configuracionSeleccionRol() {
         cbEmpresa.setEditable(false);
     }
 
+    private void actualizarTablaEnVentanaPrincipal() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLAdminUsuarios.fxml"));
+            Parent root = loader.load();
+            FXMLAdminUsuariosController adminUsuariosController = loader.getController();
+            adminUsuariosController.actualizarTabla();
+        } catch (Exception e) {
+            Utilidades.mostrarAlertaSimple("Actualizacion tabla usuarios", "No se logro actualizar", Alert.AlertType.WARNING);
+        }
+    }
+
+    public void setAdminUsuariosController(FXMLAdminUsuariosController controller) {
+        this.adminUsuariosController = controller;
+    }
 }

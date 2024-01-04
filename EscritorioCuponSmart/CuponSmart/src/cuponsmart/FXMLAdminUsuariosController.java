@@ -2,11 +2,11 @@ package cuponsmart;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.HashMap;
-import java.util.List;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -32,7 +32,11 @@ import utils.Utilidades;
 
 public class FXMLAdminUsuariosController implements Initializable {
 
+    private FXMLAdminUsuariosController adminUsuariosController;
+
     private ObservableList<Usuario> usuariosDisponibles;
+    private FilteredList<Usuario> filteredListUsuarios;
+
     private Usuario usuarioSesion = new Usuario();
     private Usuario nUsuario = new Usuario();
 
@@ -60,17 +64,25 @@ public class FXMLAdminUsuariosController implements Initializable {
     private TableColumn<Usuario, String> colRol;
     @FXML
     private TableView<Usuario> tbUsuarios;
+    @FXML
+    private Label lbUsuario;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         usuariosDisponibles = FXCollections.observableArrayList();
+        filteredListUsuarios = new FilteredList<>(usuariosDisponibles);
+
         configurarColumnasTabla();
         inicializarGraficosAdmin();
+        configurarBusqueda();
+
     }
 
     public void inicializarInformacion(Usuario usuarioSesion) {
         this.usuarioSesion = usuarioSesion;
-        consultarInformacion();
+        consultarInformacion(usuarioSesion.getId_usuario());
+        cargarInformacionUsuario();
+
     }
 
     @FXML
@@ -88,6 +100,7 @@ public class FXMLAdminUsuariosController implements Initializable {
 
         }
     }
+
     @FXML
     private void btnEliminarUsuario(ActionEvent event) {
         nUsuario = tbUsuarios.getSelectionModel().getSelectedItem();
@@ -103,6 +116,10 @@ public class FXMLAdminUsuariosController implements Initializable {
             Utilidades.mostrarAlertaSimple("Selección de usuario", "Para eliminar, debes seleccionar un usuario de la tabla", Alert.AlertType.WARNING);
         }
 
+    }
+
+    public void setAdminUsuariosController(FXMLAdminUsuariosController controller) {
+        this.adminUsuariosController = controller;
     }
 
     public void inicializarGraficosAdmin() {
@@ -129,11 +146,6 @@ public class FXMLAdminUsuariosController implements Initializable {
 
     }
 
-    public void actualizarTabla() {
-        usuariosDisponibles.clear();
-        consultarInformacion();
-    }
-
     private void configurarColumnasTabla() {
         colNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         colApellidoPat.setCellValueFactory(new PropertyValueFactory<>("apellido_paterno"));
@@ -144,11 +156,13 @@ public class FXMLAdminUsuariosController implements Initializable {
 
     }
 
-    private void consultarInformacion() {
-        MensajeUsuarios respuesta = UsuarioDAO.cargarUsuarios(usuarioSesion.getId_usuario());
+    private void consultarInformacion(Integer id_usuario) {
+        MensajeUsuarios respuesta = UsuarioDAO.cargarUsuarios(id_usuario);
         if (!respuesta.isError() && respuesta.getMensaje() != null) {
+            usuariosDisponibles.clear();
             usuariosDisponibles.addAll(respuesta.getUsuarios());
             tbUsuarios.setItems(usuariosDisponibles);
+            tbUsuarios.refresh();
         } else {
             Utilidades.mostrarAlertaSimple("Error", respuesta.getMensaje(), Alert.AlertType.ERROR);
         }
@@ -161,7 +175,7 @@ public class FXMLAdminUsuariosController implements Initializable {
 
             FXMLFormularioUsuarioController controlador = vistaLoad.getController();
             controlador.inicializarInformacion(nUsuario, esEdicion);
-
+            controlador.setAdminUsuariosController(this);
             Stage stage = new Stage();
             Scene escenaAdmin = new Scene(vista);
             stage.setScene(escenaAdmin);
@@ -174,4 +188,34 @@ public class FXMLAdminUsuariosController implements Initializable {
         }
     }
 
+    private void configurarBusqueda() {
+        tfBusqueda.textProperty().addListener((textObservable, oldText, newText) -> {
+            if (newText.isEmpty()) {
+                filteredListUsuarios.setPredicate(null);
+                return;
+            }
+            buscarUsuarios(newText);
+        });
+    }
+
+    private void buscarUsuarios(String busqueda) {
+        Predicate<Usuario> predicado = usuario
+                -> usuario.getNombre().toLowerCase().contains(busqueda.toLowerCase())
+                || usuario.getUsername().toLowerCase().contains(busqueda.toLowerCase())
+                || usuario.nombreRolProperty().getValue().toLowerCase().contains(busqueda.toLowerCase());
+
+        filteredListUsuarios.setPredicate(predicado);
+        tbUsuarios.setItems(filteredListUsuarios);
+    }
+
+    private void cargarInformacionUsuario() {
+        lbUsuario.setText(usuarioSesion.getUsername());
+
+        Image imagenUsuario = new Image("recursos/1.png");
+        ivUsuarioSesionFoto.setImage(imagenUsuario);
+    }
+
+    public void actualizarTabla() {
+        consultarInformacion(usuarioSesion.getId_usuario());
+    }
 }

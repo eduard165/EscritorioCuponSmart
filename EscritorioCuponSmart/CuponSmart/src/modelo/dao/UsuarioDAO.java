@@ -10,6 +10,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import static javafx.scene.input.KeyCode.T;
+import javafx.scene.input.Mnemonic;
 import modelo.ConexionHTTP;
 import modelo.pojo.CodigoHTTP;
 import modelo.pojo.Empresa;
@@ -25,8 +26,7 @@ import utils.Constantes;
  */
 public class UsuarioDAO {
 
-   
-     public static MensajeUsuarios cargarUsuarios(Integer id_usuario) {
+    public static MensajeUsuarios cargarUsuarios(Integer id_usuario) {
         MensajeUsuarios respuesta = new MensajeUsuarios();
         String url = Constantes.URL_WS + "usuarios/cargarUsuarios/" + id_usuario;
         CodigoHTTP codigoRespuesta = ConexionHTTP.peticionGET(url);
@@ -41,10 +41,10 @@ public class UsuarioDAO {
         return respuesta;
 
     }
-    
+
     public static Mensaje registrarUsuario(Usuario usuario) {
         Mensaje msj = new Mensaje();
-        String url = Constantes.URL_WS + "usuarios/registrar";
+        String url = Constantes.URL_WS + "usuarios/agregar";
         Gson gson = new Gson();
         String parametros = gson.toJson(usuario);
         CodigoHTTP respuesta = ConexionHTTP.peticionPOSTJson(url, parametros);
@@ -62,7 +62,7 @@ public class UsuarioDAO {
         String url = Constantes.URL_WS + "usuarios/editar";
         Gson gson = new Gson();
         String parametros = gson.toJson(usuario);
-        CodigoHTTP respuesta = ConexionHTTP.peticionPOSTJson(url, parametros);
+        CodigoHTTP respuesta = ConexionHTTP.peticionPUTJson(url, parametros);
         if (respuesta.getCodigoRespuesta() == HttpURLConnection.HTTP_OK) {
             msj = gson.fromJson(respuesta.getContenido(), Mensaje.class);
         } else {
@@ -71,6 +71,27 @@ public class UsuarioDAO {
         }
         return msj;
     }
-    
+
+    public static Mensaje eliminarUsuario(int id_usuario) {
+        Mensaje mensaje = new Mensaje();
+        try {
+            String url = Constantes.URL_WS + "usuarios/eliminar";
+            String parametros = "id_usuario=" + id_usuario;
+
+            CodigoHTTP respuestaWS = ConexionHTTP.peticionDELETE(url, parametros);
+
+            if (respuestaWS.getCodigoRespuesta() == HttpURLConnection.HTTP_OK) {
+                Gson gson = new Gson();
+                mensaje = gson.fromJson(respuestaWS.getContenido(), Mensaje.class);
+            } else {
+                mensaje.setError(true);
+                mensaje.setMensaje("Error al eliminar el usuario. Código de respuesta: " + respuestaWS.getCodigoRespuesta());
+            }
+        } catch (Exception ex) {
+            mensaje.setError(true);
+            mensaje.setMensaje("Excepción al eliminar el usuario: " + ex.getMessage());
+        }
+        return mensaje;
+    }
 
 }
