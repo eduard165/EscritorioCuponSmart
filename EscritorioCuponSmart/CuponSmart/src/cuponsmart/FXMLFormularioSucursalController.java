@@ -77,6 +77,7 @@ public class FXMLFormularioSucursalController implements Initializable {
         this.esEdicion = esEdicion;
         if (esEdicion) {
             cargarInformacionSucursal();
+            
         }
 
     }

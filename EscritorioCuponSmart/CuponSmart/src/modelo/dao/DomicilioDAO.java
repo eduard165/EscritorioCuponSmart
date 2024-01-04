@@ -53,7 +53,6 @@ public class DomicilioDAO {
         String url = Constantes.URL_WS + "direccion/buscar/empresa/" + empresa_rfc;
         CodigoHTTP codigoRespuesta = ConexionHTTP.peticionGET(url);
         if (codigoRespuesta.getCodigoRespuesta() == HttpURLConnection.HTTP_OK) {
-
             Gson gson = new Gson();
             respuesta = gson.fromJson(codigoRespuesta.getContenido(), Direccion.class);
         }
@@ -84,7 +83,7 @@ public class DomicilioDAO {
             msj = gson.fromJson(respuesta.getContenido(), Mensaje.class);
         } else {
             msj.setError(true);
-            msj.setMensaje("Error en la peticion para agregar la direccion");
+            msj.setMensaje("Error en la peticion para agregar la direccion " + parametros);
         }
         return msj;
     }

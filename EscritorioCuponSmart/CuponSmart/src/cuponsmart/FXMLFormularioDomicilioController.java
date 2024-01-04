@@ -111,36 +111,44 @@ public class FXMLFormularioDomicilioController implements Initializable {
     }
 
     private void cargarInformacion() {
-
+        Direccion direccion = new Direccion();
         if (empresa_rfc != null) {
             direccion = DomicilioDAO.cargarDireccionEmpresa(empresa_rfc);
-            tfCalle.setText(direccion.getCalle());
-            tfColonia.setText(direccion.getColonia());
-            tfNumero.setText(String.valueOf(direccion.getNumero()));
-            tfCodigoPostal.setText(direccion.getCodigo_postal());
+            if (direccion != null) {
+                tfCalle.setText(direccion.getCalle());
+                tfColonia.setText(direccion.getColonia());
+                tfNumero.setText(String.valueOf(direccion.getNumero()));
+                tfCodigoPostal.setText(direccion.getCodigo_postal());
+                
+            }
         }
         if (id_sucursal != 0) {
-            direccion = DomicilioDAO.cargarDireccionSucursal(id_sucursal);
-            tfCalle.setText(direccion.getCalle());
-            tfColonia.setText(direccion.getColonia());
-            tfNumero.setText(String.valueOf(direccion.getNumero()));
-            tfCodigoPostal.setText(direccion.getCodigo_postal());
 
+            direccion = DomicilioDAO.cargarDireccionSucursal(id_sucursal);
+            if (direccion != null) {
+
+                tfCalle.setText(direccion.getCalle());
+                tfColonia.setText(direccion.getColonia());
+                tfNumero.setText(String.valueOf(direccion.getNumero()));
+                tfCodigoPostal.setText(direccion.getCodigo_postal());
+            }
         }
     }
 
     public void guardarInformacionEnDireccion() {
         if (empresa_rfc != null) {
             direccion.setTipo_direccion(1);
+            direccion.setEmpresa_rfc(empresa_rfc);
         }
         if (id_sucursal != 0) {
             direccion.setTipo_direccion(3);
+            direccion.setId_sucursal(id_sucursal);
         }
         direccion.setCalle(tfCalle.getText());
         direccion.setColonia(tfColonia.getText());
         direccion.setNumero(Integer.parseInt(tfNumero.getText()));
         direccion.setCodigo_postal(tfCodigoPostal.getText());
-
+        
         Municipio municipioSeleccionado = cbMunicipio.getValue();
         if (municipioSeleccionado != null) {
             direccion.setId_municipio(municipioSeleccionado.getId_municipio());
@@ -257,6 +265,7 @@ public class FXMLFormularioDomicilioController implements Initializable {
     public void setAdminSucursalesController(FXMLAdminSucursalesController controller) {
         this.adminSucursalesController = controller;
     }
+
     public void setAdminEmpresasController(FXMLAdminEmpresasController controller) {
         this.adminEmpresasController = controller;
     }

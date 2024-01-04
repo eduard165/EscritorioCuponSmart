@@ -249,7 +249,7 @@ public class FXMLAdminEmpresasController implements Initializable {
     }
 
     private void establecerImagenPredeterminada() {
-        String pathImagenPredeterminada = "recursos/imagen_default.png";
+        String pathImagenPredeterminada = "recursos/1.png";
         Image imagenPredeterminada = new Image(getClass().getClassLoader().getResourceAsStream(pathImagenPredeterminada));
         ivUsuarioSesionFoto.setImage(imagenPredeterminada);
     }

@@ -63,7 +63,8 @@ public class FXMLFormularioUsuarioController implements Initializable {
         this.band = band;
         if (!band) {
             cargarUsuario();
-            cbRol.setEditable(false);
+            cbRol.setEditable(band);
+            cbRol.setVisible(band);
         }
     }
 
