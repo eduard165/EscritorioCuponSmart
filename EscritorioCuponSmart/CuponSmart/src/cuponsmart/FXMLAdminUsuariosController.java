@@ -105,7 +105,7 @@ public class FXMLAdminUsuariosController implements Initializable {
     private void btnEliminarUsuario(ActionEvent event) {
         nUsuario = tbUsuarios.getSelectionModel().getSelectedItem();
         if (nUsuario != null) {
-            Mensaje respuesta = UsuarioDAO.editarUsuario(nUsuario);
+            Mensaje respuesta = UsuarioDAO.eliminarUsuario(nUsuario.getId_usuario());
             if (!respuesta.getError()) {
                 Utilidades.mostrarAlertaSimple("Eliminacion correcta", "Se eliminó con éxito", Alert.AlertType.INFORMATION);
                 actualizarTabla();
