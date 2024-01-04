@@ -20,12 +20,12 @@
       </Label>
       <TableView fx:id="tvEmpresas" layoutX="242.0" layoutY="248.0" prefHeight="444.0" prefWidth="859.0" style="-fx-border-color: #9c27b0; -fx-border-width: 2;">
         <columns>
-          <TableColumn fx:id="tcRFC" prefWidth="121.0" text="Nombre" />
-            <TableColumn fx:id="tcNombreComercial" prefWidth="121.0" text="Categoría" />
-            <TableColumn fx:id="tcTelefono" prefWidth="123.0" text="Fecha de Inicio" />
-            <TableColumn fx:id="tcEmail" prefWidth="141.0" text="Caducidad" />
-            <TableColumn fx:id="tcRepLegal" prefWidth="168.0" text="Tipo de promo" />
-            <TableColumn prefWidth="153.0" text="Sucursal" />
+          <TableColumn fx:id="clNombre" prefWidth="121.0" text="Nombre" />
+            <TableColumn fx:id="clCategoria" prefWidth="121.0" text="Categoría" />
+            <TableColumn fx:id="clFechaInicio" prefWidth="123.0" text="Fecha de Inicio" />
+            <TableColumn fx:id="clFechaTermino" prefWidth="141.0" text="Caducidad" />
+            <TableColumn fx:id="clTipoPromocion" prefWidth="183.0" text="Tipo de promocion" />
+            <TableColumn fx:id="clNombreSucursal" prefWidth="167.0" text="Sucursal" />
         </columns>
       </TableView>
       <TextField fx:id="tfBusquedaEmpresa" layoutX="556.0" layoutY="141.0" prefHeight="31.0" prefWidth="283.0" style="-fx-border-color: #9c27b0; -fx-border-radius: 20; -fx-background-radius: 20;" />
